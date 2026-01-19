@@ -27617,7 +27617,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Save API key to localStorage
      * @param {string} key - API key to save
-     * @param {string} provider - Provider type ('google', 'val', 'atlascloud')
+     * @param {string} provider - Provider type ('google', 'val', 'atlascloud', 'kie')
      */
     function saveApiKey(key, provider = 'google') {
         try {
@@ -27635,7 +27635,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Get current API provider
-     * @returns {string} Provider type ('google', 'val', 'atlascloud')
+     * @returns {string} Provider type ('google', 'val', 'atlascloud', 'kie')
      */
     function getApiProvider() {
         return localStorage.getItem("gemini_api_provider") || 'google';
@@ -27652,6 +27652,152 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem("gemini_api_provider");
     }
     window.clearApiKey = clearApiKey;
+
+    // ============================================
+    // KIE.AI API INTEGRATION
+    // ============================================
+
+    /**
+     * Create task in kie.ai API
+     * @param {string} prompt - Text prompt for image generation
+     * @param {Array<string>} imageUrls - Array of image URLs (optional, max 10)
+     * @param {string} outputFormat - 'png' or 'jpeg'
+     * @param {string} imageSize - Aspect ratio like '1:1', '16:9', '9:16', '3:4', '4:3'
+     * @returns {Promise<string>} Task ID
+     */
+    async function createKieTask(prompt, imageUrls = [], outputFormat = 'png', imageSize = '1:1') {
+        const apiKey = getApiKey();
+        if (!apiKey) {
+            throw new Error('API key tidak ditemukan');
+        }
+
+        const response = await fetch('https://api.kie.ai/api/v1/jobs/createTask', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'google/nano-banana-edit',
+                input: {
+                    prompt: prompt.substring(0, 20000), // Max 20000 chars
+                    image_urls: imageUrls.slice(0, 10), // Max 10 images
+                    output_format: outputFormat,
+                    image_size: imageSize
+                }
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(`kie.ai API error: ${response.status} - ${errorData.message || 'Unknown error'}`);
+        }
+
+        const result = await response.json();
+
+        if (result.code !== 200 || !result.data?.taskId) {
+            throw new Error(`kie.ai task creation failed: ${result.message || 'No task ID returned'}`);
+        }
+
+        return result.data.taskId;
+    }
+
+    /**
+     * Query kie.ai task status and get results
+     * @param {string} taskId - Task ID from createTask
+     * @returns {Promise<Object>} Task result data
+     */
+    async function queryKieTaskStatus(taskId) {
+        const apiKey = getApiKey();
+        if (!apiKey) {
+            throw new Error('API key tidak ditemukan');
+        }
+
+        const response = await fetch(`https://api.kie.ai/api/v1/jobs/recordInfo?taskId=${taskId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${apiKey}`
+            }
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(`kie.ai query error: ${response.status} - ${errorData.message || 'Unknown error'}`);
+        }
+
+        const result = await response.json();
+
+        if (result.code !== 200) {
+            throw new Error(`kie.ai query failed: ${result.message || 'Unknown error'}`);
+        }
+
+        return result.data;
+    }
+
+    /**
+     * Poll kie.ai task until completion
+     * @param {string} taskId - Task ID to poll
+     * @param {number} maxAttempts - Maximum polling attempts (default: 60)
+     * @param {number} intervalMs - Polling interval in milliseconds (default: 2000)
+     * @returns {Promise<string>} Image URL from result
+     */
+    async function pollKieTask(taskId, maxAttempts = 60, intervalMs = 2000) {
+        for (let i = 0; i < maxAttempts; i++) {
+            const taskData = await queryKieTaskStatus(taskId);
+
+            // Check task state
+            if (taskData.state === 'success') {
+                // Parse resultJson to get image URL
+                const resultJson = JSON.parse(taskData.resultJson);
+                if (resultJson.resultUrls && resultJson.resultUrls.length > 0) {
+                    return resultJson.resultUrls[0];
+                }
+                throw new Error('No result URL in successful task');
+            } else if (taskData.state === 'failed') {
+                throw new Error(`Task failed: ${taskData.failMsg || 'Unknown error'}`);
+            }
+
+            // Task still processing, wait before next poll
+            await new Promise(resolve => setTimeout(resolve, intervalMs));
+        }
+
+        throw new Error(`Task timeout after ${maxAttempts * intervalMs / 1000} seconds`);
+    }
+
+    /**
+     * Generate image using kie.ai API (complete flow: create task → poll → get result)
+     * @param {string} prompt - Text prompt for image generation
+     * @param {Array<string>} imageUrls - Array of image URLs (optional)
+     * @param {string} outputFormat - 'png' or 'jpeg'
+     * @param {string} imageSize - Aspect ratio like '1:1', '16:9', etc.
+     * @returns {Promise<string>} Base64 data URL of generated image
+     */
+    async function generateImageWithKie(prompt, imageUrls = [], outputFormat = 'png', imageSize = '1:1') {
+        console.log('[kie.ai] Creating task...', { prompt: prompt.substring(0, 100), imageSize });
+
+        // Step 1: Create task
+        const taskId = await createKieTask(prompt, imageUrls, outputFormat, imageSize);
+        console.log('[kie.ai] Task created:', taskId);
+
+        // Step 2: Poll until completion
+        const imageUrl = await pollKieTask(taskId);
+        console.log('[kie.ai] Task completed, image URL:', imageUrl);
+
+        // Step 3: Fetch image and convert to base64
+        const imageResponse = await fetch(imageUrl);
+        if (!imageResponse.ok) {
+            throw new Error('Failed to fetch generated image from kie.ai');
+        }
+
+        const imageBlob = await imageResponse.blob();
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(imageBlob);
+        });
+    }
+    window.generateImageWithKie = generateImageWithKie;
 
     closeModalBtn.addEventListener('click', () => universalModal.classList.remove('visible'));
     universalModal.addEventListener('click', (e) => {
