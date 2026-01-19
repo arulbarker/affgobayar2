@@ -39680,7 +39680,26 @@ This is NOT an AI render - this is a REAL professional wedding photograph with n
         // SMART API CALL with multi-model fallback and quota retry
         async function smartTouringApiCall(parts, aspectRatio, cardId, retryCount = 0) {
             const card = document.getElementById(cardId);
+            const provider = getApiProvider();
 
+            // Use universal API wrapper for non-Google providers
+            if (provider !== 'google') {
+                try {
+                    // Extract text prompt from parts
+                    const textPart = parts.find(p => p.text);
+                    const prompt = textPart ? textPart.text : 'Create an epic professional touring motorcycle photo';
+
+                    const imageBase64 = await generateImageUniversal(prompt, aspectRatio, 'png');
+                    // Extract base64 data (remove data:image/png;base64, prefix)
+                    const imageData = imageBase64.split(',')[1];
+                    return { success: true, data: imageData };
+                } catch (error) {
+                    console.error('[Universal API] Error:', error);
+                    return { success: false, errorType: 'api_error' };
+                }
+            }
+
+            // Google SDK fallback
             try {
                 const { GoogleGenAI } = await import('@google/genai');
                 const ai = new GoogleGenAI({ apiKey: getApiKey() });
@@ -40173,6 +40192,32 @@ FINAL OUTPUT: An Instagram-worthy, magazine-quality touring photo that looks lik
 
             // SMART API CALL with multi-model fallback and quota retry
             async function generateImageWithRetry(parts, aspectRatio, retryCount = 0) {
+                const provider = getApiProvider();
+
+                // Use universal API wrapper for non-Google providers
+                if (provider !== 'google') {
+                    try {
+                        // Extract text prompt from parts
+                        const textPart = parts.find(p => p.text);
+                        const prompt = textPart ? textPart.text : 'Create a professional POV hand holding product photo';
+
+                        const imageBase64 = await generateImageUniversal(prompt, aspectRatio, 'png');
+                        // Return in same format as Google SDK
+                        const imageData = imageBase64.split(',')[1];
+                        return {
+                            candidates: [{
+                                content: {
+                                    parts: [{ inlineData: { data: imageData } }]
+                                }
+                            }]
+                        };
+                    } catch (error) {
+                        console.error('[Universal API] Error:', error);
+                        return null;
+                    }
+                }
+
+                // Google SDK fallback
                 try {
                     const { GoogleGenAI } = await import('@google/genai');
                     const ai = new GoogleGenAI({ apiKey: getApiKey() });
@@ -41126,6 +41171,32 @@ The design should be clearly visible and properly placed on the mockup surface.`
 
             // SMART API CALL with multi-model fallback and quota retry
             async function generateImageWithRetry(parts, aspectRatio, retryCount = 0) {
+                const provider = getApiProvider();
+
+                // Use universal API wrapper for non-Google providers
+                if (provider !== 'google') {
+                    try {
+                        // Extract text prompt from parts
+                        const textPart = parts.find(p => p.text);
+                        const prompt = textPart ? textPart.text : 'Create a professional product mockup';
+
+                        const imageBase64 = await generateImageUniversal(prompt, aspectRatio, 'png');
+                        // Return in same format as Google SDK
+                        const imageData = imageBase64.split(',')[1];
+                        return {
+                            candidates: [{
+                                content: {
+                                    parts: [{ inlineData: { data: imageData } }]
+                                }
+                            }]
+                        };
+                    } catch (error) {
+                        console.error('[Universal API] Error:', error);
+                        return null;
+                    }
+                }
+
+                // Google SDK fallback
                 try {
                     const { GoogleGenAI } = await import('@google/genai');
                     const ai = new GoogleGenAI({ apiKey: getApiKey() });
@@ -41997,7 +42068,26 @@ PENTING:
         // SMART API CALL with multi-model fallback and quota retry
         async function smartMirrorApiCall(parts, aspectRatio, cardId, retryCount = 0) {
             const card = document.getElementById(cardId);
+            const provider = getApiProvider();
 
+            // Use universal API wrapper for non-Google providers
+            if (provider !== 'google') {
+                try {
+                    // Extract text prompt from parts
+                    const textPart = parts.find(p => p.text);
+                    const prompt = textPart ? textPart.text : 'Create a professional mirror selfie photo';
+
+                    const imageBase64 = await generateImageUniversal(prompt, aspectRatio, 'png');
+                    // Extract base64 data (remove data:image/png;base64, prefix)
+                    const imageData = imageBase64.split(',')[1];
+                    return { success: true, data: imageData };
+                } catch (error) {
+                    console.error('[Universal API] Error:', error);
+                    return { success: false, errorType: 'api_error' };
+                }
+            }
+
+            // Google SDK fallback
             try {
                 const { GoogleGenAI } = await import('@google/genai');
                 const ai = new GoogleGenAI({ apiKey: getApiKey() });
@@ -69868,7 +69958,22 @@ Make it look like a real ${selectedSize.toLowerCase()} ${selectedColor.toLowerCa
         // SMART API CALL with retry and fallback
         async function smartApiCall(prompt, base64, mime, ratio, cardId, retryCount = 0) {
             const card = document.getElementById(cardId);
+            const provider = getApiProvider();
 
+            // Use universal API wrapper for non-Google providers
+            if (provider !== 'google') {
+                try {
+                    const imageBase64 = await generateImageUniversal(prompt, ratio, 'png');
+                    // Extract base64 data (remove data:image/png;base64, prefix)
+                    const imageData = imageBase64.split(',')[1];
+                    return { success: true, data: imageData };
+                } catch (error) {
+                    console.error('[Universal API] Error:', error);
+                    return { success: false, errorType: 'api_error' };
+                }
+            }
+
+            // Google SDK fallback
             try {
                 const { GoogleGenAI } = await import('@google/genai');
                 const ai = new GoogleGenAI({ apiKey: getApiKey() });
