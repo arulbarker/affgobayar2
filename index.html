@@ -22305,6 +22305,31 @@
                         </p>
                     </div>
 
+                    <!-- Jumlah Variasi -->
+                    <div class="mb-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white font-bold text-sm shadow-lg">6</div>
+                            <h3 class="text-xl font-bold text-gray-800">Jumlah Variasi</h3>
+                            <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
+                        </div>
+                        <div id="pov-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                            <button type="button" data-count="1" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">1</button>
+                            <button type="button" data-count="2" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">2</button>
+                            <button type="button" data-count="3" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">3</button>
+                            <button type="button" data-count="4" class="count-btn-pov selected flex items-center justify-center p-2.5 border-2 rounded-lg transition-all active:scale-95 text-sm font-bold" style="border-color: #a855f7; background: linear-gradient(135deg, #a855f7, #8b5cf6); color: white; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);">4</button>
+                            <button type="button" data-count="5" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">5</button>
+                            <button type="button" data-count="6" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">6</button>
+                            <button type="button" data-count="7" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">7</button>
+                            <button type="button" data-count="8" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">8</button>
+                            <button type="button" data-count="9" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">9</button>
+                            <button type="button" data-count="10" class="count-btn-pov flex items-center justify-center p-2.5 border-2 border-gray-200 rounded-lg hover:border-purple-400 transition-all active:scale-95 text-sm font-semibold">10</button>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            <i class="fas fa-lightbulb mr-1"></i>
+                            Pilih jumlah foto POV yang akan di-generate (1-10 variasi)
+                        </p>
+                    </div>
+
                     <!-- Generate Button -->
                     <div class="text-center">
                         <button
@@ -22313,7 +22338,7 @@
                             disabled
                         >
                             <i class="fas fa-magic mr-3"></i>
-                            Generate 7 Foto POV Tangan
+                            Generate <span id="pov-count-text">4</span> Foto POV Tangan
                         </button>
                     </div>
                 </div>
@@ -22327,7 +22352,7 @@
                                 Sedang Membuat Foto POV Tangan...
                             </h3>
                             <p class="text-gray-600 mb-4">
-                                Mohon tunggu, AI sedang menghasilkan <span id="pov-progress-text">0/7</span> foto
+                                Mohon tunggu, AI sedang menghasilkan <span id="pov-progress-text">0/<span id="pov-total-text">4</span></span> foto
                             </p>
                             <div class="w-full max-w-md bg-gray-200 rounded-full h-3">
                                 <div
@@ -22616,25 +22641,31 @@
                                 <div class="flex items-center gap-3 mb-4">
                                     <div class="flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm shadow-lg" style="background: linear-gradient(135deg, #f97316, #dc2626);">6</div>
                                     <h3 class="text-lg font-bold text-gray-800">Jumlah Variasi</h3>
+                                    <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                 </div>
 
-                                <div id="touring-count-selection" class="grid grid-cols-3 gap-3">
-                                    <button type="button" data-count="4" class="option-btn-touring">
-                                        4 Foto
-                                    </button>
-                                    <button type="button" data-count="6" class="option-btn-touring selected">
-                                        6 Foto
-                                    </button>
-                                    <button type="button" data-count="8" class="option-btn-touring">
-                                        8 Foto
-                                    </button>
+                                <div id="touring-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                    <button type="button" data-count="1" class="option-btn-touring font-semibold">1</button>
+                                    <button type="button" data-count="2" class="option-btn-touring font-semibold">2</button>
+                                    <button type="button" data-count="3" class="option-btn-touring font-semibold">3</button>
+                                    <button type="button" data-count="4" class="option-btn-touring selected font-bold" style="background: linear-gradient(135deg, #f97316, #dc2626); color: white; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);">4</button>
+                                    <button type="button" data-count="5" class="option-btn-touring font-semibold">5</button>
+                                    <button type="button" data-count="6" class="option-btn-touring font-semibold">6</button>
+                                    <button type="button" data-count="7" class="option-btn-touring font-semibold">7</button>
+                                    <button type="button" data-count="8" class="option-btn-touring font-semibold">8</button>
+                                    <button type="button" data-count="9" class="option-btn-touring font-semibold">9</button>
+                                    <button type="button" data-count="10" class="option-btn-touring font-semibold">10</button>
                                 </div>
+                                <p class="text-xs text-gray-500 mt-2">
+                                    <i class="fas fa-lightbulb mr-1"></i>
+                                    Pilih jumlah foto touring yang akan di-generate (1-10 variasi)
+                                </p>
                             </div>
 
                             <!-- Generate Button -->
                             <button type="button" id="touring-generate-btn" class="btn-generate-touring w-full" disabled>
                                 <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                                <span>Generate <span id="touring-count-text">6</span> Foto Touring</span>
+                                <span>Generate <span id="touring-count-text">4</span> Foto Touring</span>
                             </button>
                             <p class="text-xs text-center text-gray-500">⏱️ Proses ~30-40 detik per foto</p>
                         </div>
@@ -22665,7 +22696,7 @@
                                     <div class="w-full bg-gray-200 rounded-full h-2.5">
                                         <div id="touring-progress-bar" class="h-2.5 rounded-full transition-all duration-300" style="width: 0%; background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);"></div>
                                     </div>
-                                    <p class="text-xs text-gray-500 text-center mt-2" id="touring-progress-text">0/6 completed</p>
+                                    <p class="text-xs text-gray-500 text-center mt-2" id="touring-progress-text">0/<span id="touring-total-text">4</span> completed</p>
                                 </div>
                             </div>
                         </div>
@@ -22675,7 +22706,7 @@
                             <div class="flex justify-between items-center mb-6">
                                 <h3 class="text-xl font-bold text-gray-800">
                                     <i class="fas fa-images mr-2" style="color: #f97316;"></i>
-                                    <span id="touring-results-count">6</span> Epic Touring Photos! 🏍️
+                                    <span id="touring-results-count">4</span> Epic Touring Photos! 🏍️
                                 </h3>
                                 <button type="button" id="touring-download-all-btn" class="px-4 py-2 rounded-lg font-semibold text-white text-sm transition-all" style="background: linear-gradient(135deg, #f97316, #dc2626);">
                                     <i class="fas fa-download mr-1"></i>
@@ -22955,24 +22986,30 @@
                                 <div class="flex items-center gap-3 mb-4">
                                     <div class="flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm shadow-lg" style="background: linear-gradient(135deg, #06b6d4, #0284c1);">9</div>
                                     <h3 class="text-lg font-bold text-gray-800">Jumlah Foto</h3>
+                                    <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                 </div>
-                                <div id="mirror-count-selection" class="grid grid-cols-3 gap-3">
-                                    <button type="button" data-count="4" class="mirror-count-btn">
-                                        4 Foto
-                                    </button>
-                                    <button type="button" data-count="6" class="mirror-count-btn mirror-count-selected">
-                                        6 Foto
-                                    </button>
-                                    <button type="button" data-count="8" class="mirror-count-btn">
-                                        8 Foto
-                                    </button>
+                                <div id="mirror-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                    <button type="button" data-count="1" class="mirror-count-btn font-semibold">1</button>
+                                    <button type="button" data-count="2" class="mirror-count-btn font-semibold">2</button>
+                                    <button type="button" data-count="3" class="mirror-count-btn font-semibold">3</button>
+                                    <button type="button" data-count="4" class="mirror-count-btn mirror-count-selected font-bold" style="background: linear-gradient(135deg, #06b6d4, #0284c1); color: white; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);">4</button>
+                                    <button type="button" data-count="5" class="mirror-count-btn font-semibold">5</button>
+                                    <button type="button" data-count="6" class="mirror-count-btn font-semibold">6</button>
+                                    <button type="button" data-count="7" class="mirror-count-btn font-semibold">7</button>
+                                    <button type="button" data-count="8" class="mirror-count-btn font-semibold">8</button>
+                                    <button type="button" data-count="9" class="mirror-count-btn font-semibold">9</button>
+                                    <button type="button" data-count="10" class="mirror-count-btn font-semibold">10</button>
                                 </div>
+                                <p class="text-xs text-gray-500 mt-2">
+                                    <i class="fas fa-lightbulb mr-1"></i>
+                                    Pilih jumlah mirror selfie yang akan di-generate (1-10 variasi)
+                                </p>
                             </div>
 
                             <!-- Generate Button -->
                             <button id="mirror-generate-btn" class="w-full py-4 px-6 rounded-xl font-bold text-lg text-white shadow-lg transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100" style="background: linear-gradient(135deg, #06b6d4 0%, #0284c1 100%);" disabled>
                                 <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                                <span>Generate <span id="mirror-count-text">6</span> Mirror Selfies</span>
+                                <span>Generate <span id="mirror-count-text">4</span> Mirror Selfies</span>
                             </button>
 
                         </div>
@@ -22987,7 +23024,7 @@
                             <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
                                 <h3 class="text-2xl font-bold" style="color: #06b6d4;">
                                     <i class="fas fa-images mr-2"></i>
-                                    <span id="mirror-results-count">6</span> Mirror Selfies Generated!
+                                    <span id="mirror-results-count">4</span> Mirror Selfies Generated!
                                 </h3>
                                 <button id="mirror-download-all-btn" class="py-2 px-4 rounded-lg font-semibold text-white shadow-lg transition-all duration-300 active:scale-95 flex items-center gap-2" style="background: linear-gradient(135deg, #06b6d4 0%, #0284c1 100%);">
                                     <i class="fas fa-download"></i>
@@ -25895,17 +25932,19 @@
                                     <div class="flex items-center gap-2 mb-3">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-indigo-600 to-indigo-700 text-white font-bold text-sm shadow-lg">6</div>
                                         <h3 class="text-lg font-bold text-gray-800">Jumlah Variasi</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="mockup-count-selection" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-count="3" class="count-btn-mockup">
-                                            3 Mockups
-                                        </button>
-                                        <button type="button" data-count="4" class="count-btn-mockup count-selected">
-                                            4 Mockups
-                                        </button>
-                                        <button type="button" data-count="6" class="count-btn-mockup">
-                                            6 Mockups
-                                        </button>
+                                    <div id="mockup-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                                        <button type="button" data-count="1" class="count-btn-mockup text-sm font-semibold">1</button>
+                                        <button type="button" data-count="2" class="count-btn-mockup text-sm font-semibold">2</button>
+                                        <button type="button" data-count="3" class="count-btn-mockup text-sm font-semibold">3</button>
+                                        <button type="button" data-count="4" class="count-btn-mockup count-selected text-sm font-bold">4</button>
+                                        <button type="button" data-count="5" class="count-btn-mockup text-sm font-semibold">5</button>
+                                        <button type="button" data-count="6" class="count-btn-mockup text-sm font-semibold">6</button>
+                                        <button type="button" data-count="7" class="count-btn-mockup text-sm font-semibold">7</button>
+                                        <button type="button" data-count="8" class="count-btn-mockup text-sm font-semibold">8</button>
+                                        <button type="button" data-count="9" class="count-btn-mockup text-sm font-semibold">9</button>
+                                        <button type="button" data-count="10" class="count-btn-mockup text-sm font-semibold">10</button>
                                     </div>
                                 </div>
 
@@ -38448,8 +38487,12 @@ This is NOT an AI render - this is a REAL professional wedding photograph with n
         let selectedMood = 'Golden Hour sunset, warm orange golden light, dramatic sky, cinematic mood, magic hour photography';
         let selectedAngle = 'Side profile angle, rider and motorcycle from the side, classic motorcycle photography composition, showing full bike and rider silhouette';
         let selectedAspect = '16:9';
-        let selectedCount = 6;
+        let selectedCount = 4;
         let generatedImages = [];
+
+        // Count selection elements
+        const countText = document.getElementById('touring-count-text');
+        const totalText = document.getElementById('touring-total-text');
 
         // Multiple File Input Handler
         function updateFileInputs() {
@@ -38683,10 +38726,26 @@ This is NOT an AI render - this is a REAL professional wedding photograph with n
                 const btn = e.target.closest('[data-count]');
                 if (!btn) return;
 
-                countSelection.querySelectorAll('.option-btn-touring').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
+                // Remove selected state from all buttons
+                countSelection.querySelectorAll('.option-btn-touring').forEach(b => {
+                    b.classList.remove('selected', 'font-bold');
+                    b.classList.add('font-semibold');
+                    b.style.background = '';
+                    b.style.color = '';
+                    b.style.boxShadow = '';
+                });
+
+                // Add selected state to clicked button
+                btn.classList.add('selected', 'font-bold');
+                btn.classList.remove('font-semibold');
+                btn.style.background = 'linear-gradient(135deg, #f97316, #dc2626)';
+                btn.style.color = 'white';
+                btn.style.boxShadow = '0 4px 12px rgba(249, 115, 22, 0.3)';
+
                 selectedCount = parseInt(btn.dataset.count, 10);
                 if (countText) countText.textContent = selectedCount;
+                if (totalText) totalText.textContent = selectedCount;
+                if (resultsCount) resultsCount.textContent = selectedCount;
             });
         }
 
@@ -39184,7 +39243,13 @@ FINAL OUTPUT: An Instagram-worthy, magazine-quality touring photo that looks lik
             let generatedImageParams = []; // Track parameters for each image
             let selectedPovRatio = '16:9';
             let selectedHandCount = '1'; // Default 1 tangan
+            let selectedPovCount = 4; // Default 4 variasi
             let currentThemesToUse = []; // Store current themes for regeneration
+
+            // Count selection elements
+            const countSelection = document.getElementById('pov-count-selection');
+            const countText = document.getElementById('pov-count-text');
+            const totalText = document.getElementById('pov-total-text');
 
             // POV Themes - berbagai setting aesthetic untuk background
             const povThemes = [
@@ -39252,6 +39317,40 @@ FINAL OUTPUT: An Instagram-worthy, magazine-quality touring photo that looks lik
                         button.classList.add('selected');
                         selectedHandCount = button.dataset.handCount;
                     }
+                });
+            }
+
+            // Count selection event listener
+            if (countSelection) {
+                countSelection.addEventListener('click', (e) => {
+                    const button = e.target.closest('[data-count]');
+                    if (!button) return;
+
+                    // Remove selected state from all buttons
+                    document.querySelectorAll('.count-btn-pov').forEach(btn => {
+                        btn.classList.remove('selected');
+                        btn.style.borderColor = '';
+                        btn.style.background = '';
+                        btn.style.color = '';
+                        btn.style.boxShadow = '';
+                        btn.classList.add('border-gray-200', 'hover:border-purple-400');
+                        btn.classList.remove('font-bold');
+                        btn.classList.add('font-semibold');
+                    });
+
+                    // Add selected state to clicked button
+                    button.classList.add('selected');
+                    button.style.borderColor = '#a855f7';
+                    button.style.background = 'linear-gradient(135deg, #a855f7, #8b5cf6)';
+                    button.style.color = 'white';
+                    button.style.boxShadow = '0 4px 12px rgba(168, 85, 247, 0.3)';
+                    button.classList.remove('border-gray-200', 'hover:border-purple-400', 'font-semibold');
+                    button.classList.add('font-bold');
+
+                    // Update count
+                    selectedPovCount = parseInt(button.dataset.count, 10);
+                    if (countText) countText.textContent = selectedPovCount;
+                    if (totalText) totalText.textContent = selectedPovCount;
                 });
             }
 
@@ -39373,24 +39472,28 @@ FINAL OUTPUT: An Instagram-worthy, magazine-quality touring photo that looks lik
                 // Determine themes to use
                 let themesToUse;
                 if (backgroundStyleDescription && uploadedBackgroundData) {
-                    // If custom background, create 7 simple variations for compositing
-                    const angles = [
+                    // If custom background, create simple variations for compositing
+                    const allAngles = [
                         'POV from above', 'top-down view at 45 degrees', 'elevated overhead angle',
                         'standing POV perspective', 'slightly raised view', 'bird eye perspective',
-                        'high angle shot'
+                        'high angle shot', 'angled overhead shot', 'tilted bird view', 'direct top-down'
                     ];
 
-                    themesToUse = angles;
+                    themesToUse = allAngles.slice(0, selectedPovCount);
                 } else {
-                    // Use default themes
-                    themesToUse = povThemes;
+                    // Use default themes, cycle through if needed
+                    const allThemes = [...povThemes];
+                    while (allThemes.length < selectedPovCount) {
+                        allThemes.push(...povThemes);
+                    }
+                    themesToUse = allThemes.slice(0, selectedPovCount);
                 }
 
                 // Store current themes for regeneration
                 currentThemesToUse = [...themesToUse];
 
                 // Create placeholder cards for queue display (Affiliate Islami style)
-                for (let i = 1; i <= 7; i++) {
+                for (let i = 1; i <= selectedPovCount; i++) {
                     const card = document.createElement('div');
                     card.id = `pov-card-${i}`;
                     card.className = 'result-card';
@@ -39398,7 +39501,7 @@ FINAL OUTPUT: An Instagram-worthy, magazine-quality touring photo that looks lik
                         <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-50">
                             <div class="text-center p-2">
                                 <div class="animate-spin rounded-full h-10 w-10 border-b-2 mx-auto mb-2" style="border-color: #764ba2;"></div>
-                                <p class="text-[10px] text-purple-600 font-bold">ANTREAN ${i}/7</p>
+                                <p class="text-[10px] text-purple-600 font-bold">ANTREAN ${i}/${selectedPovCount}</p>
                                 <p class="text-[8px] text-gray-400">Menunggu...</p>
                             </div>
                         </div>
@@ -39408,7 +39511,7 @@ FINAL OUTPUT: An Instagram-worthy, magazine-quality touring photo that looks lik
 
                 // SEQUENTIAL PROCESSING - One by one to avoid quota errors
                 try {
-                    for (let i = 0; i < themesToUse.length; i++) {
+                    for (let i = 0; i < selectedPovCount; i++) {
                         const card = document.getElementById(`pov-card-${i + 1}`);
                         const theme = themesToUse[i];
                         let prompt = '';
@@ -39576,8 +39679,8 @@ IMPORTANT: Use the EXACT environment/location from IMAGE 1 as the background. Do
             }
 
             function updateProgress(current) {
-                const percentage = (current / 7) * 100;
-                progressText.textContent = `${current}/7`;
+                const percentage = (current / selectedPovCount) * 100;
+                progressText.textContent = `${current}/${selectedPovCount}`;
                 progressBar.style.width = `${percentage}%`;
             }
 
@@ -39902,7 +40005,7 @@ IMPORTANT: Use the EXACT environment/location from IMAGE 1 as the background. Do
                 resultsGrid.innerHTML = '';
                 hideError();
                 progressBar.style.width = '0%';
-                progressText.textContent = '0/7';
+                progressText.textContent = `0/${selectedPovCount}`;
             }
         })();
 
@@ -40684,7 +40787,7 @@ The design should be clearly visible and properly placed on the mockup surface.`
         let selectedHand = 'holding-phone';
         let selectedLighting = 'natural-bright';
         let selectedRatio = '9:16';
-        let selectedCount = 6;
+        let selectedCount = 4;
         let generatedImages = [];
 
         // Mirror type descriptions
@@ -40977,15 +41080,24 @@ The design should be clearly visible and properly placed on the mockup surface.`
 
                 // Remove selected state from all buttons
                 document.querySelectorAll('.mirror-count-btn').forEach(btn => {
-                    btn.classList.remove('mirror-count-selected');
+                    btn.classList.remove('mirror-count-selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
                 });
 
                 // Add selected state to clicked button
-                button.classList.add('mirror-count-selected');
+                button.classList.add('mirror-count-selected', 'font-bold');
+                button.classList.remove('font-semibold');
+                button.style.background = 'linear-gradient(135deg, #06b6d4, #0284c1)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(6, 182, 212, 0.3)';
 
                 // Update count
                 selectedCount = parseInt(button.dataset.count, 10);
                 if (countText) countText.textContent = selectedCount;
+                if (resultsCount) resultsCount.textContent = selectedCount;
             });
         }
 
