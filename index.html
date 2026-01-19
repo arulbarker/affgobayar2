@@ -11222,18 +11222,24 @@
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shadow-md bg-gradient-to-br from-teal-500 to-lime-500">4</div>
                                         <h3 class="text-lg font-bold text-gray-800">Jumlah Variasi</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="tryon-count-selection" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-count="2" class="count-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2.5 rounded-lg border-2 border-gray-300 transition-all text-sm font-medium">
-                                            2 Images
-                                        </button>
-                                        <button type="button" data-count="4" class="count-btn count-selected bg-gradient-to-r from-teal-500 to-lime-500 text-white px-3 py-2.5 rounded-lg border-2 border-teal-500 transition-all text-sm font-bold shadow-md">
-                                            4 Images
-                                        </button>
-                                        <button type="button" data-count="6" class="count-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2.5 rounded-lg border-2 border-gray-300 transition-all text-sm font-medium">
-                                            6 Images
-                                        </button>
+                                    <div id="tryon-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-count="1" class="option-btn-tryon font-semibold">1</button>
+                                        <button type="button" data-count="2" class="option-btn-tryon font-semibold">2</button>
+                                        <button type="button" data-count="3" class="option-btn-tryon font-semibold">3</button>
+                                        <button type="button" data-count="4" class="option-btn-tryon selected font-bold" style="background: linear-gradient(135deg, #14b8a6, #84cc16); color: white; box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);">4</button>
+                                        <button type="button" data-count="5" class="option-btn-tryon font-semibold">5</button>
+                                        <button type="button" data-count="6" class="option-btn-tryon font-semibold">6</button>
+                                        <button type="button" data-count="7" class="option-btn-tryon font-semibold">7</button>
+                                        <button type="button" data-count="8" class="option-btn-tryon font-semibold">8</button>
+                                        <button type="button" data-count="9" class="option-btn-tryon font-semibold">9</button>
+                                        <button type="button" data-count="10" class="option-btn-tryon font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <i class="fas fa-lightbulb mr-1"></i>
+                                        Pilih jumlah variasi yang akan di-generate (1-10 variasi)
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
@@ -11330,11 +11336,35 @@
                         </p>
                     </div>
 
+                    <!-- Count Selection -->
+                    <div class="mt-8">
+                        <div class="flex items-center gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-gray-800">Jumlah Variasi</h3>
+                            <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
+                        </div>
+                        <div id="poses-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                            <button type="button" data-count="1" class="count-btn-poses font-semibold">1</button>
+                            <button type="button" data-count="2" class="count-btn-poses font-semibold">2</button>
+                            <button type="button" data-count="3" class="count-btn-poses font-semibold">3</button>
+                            <button type="button" data-count="4" class="count-btn-poses selected font-bold" style="background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);">4</button>
+                            <button type="button" data-count="5" class="count-btn-poses font-semibold">5</button>
+                            <button type="button" data-count="6" class="count-btn-poses font-semibold">6</button>
+                            <button type="button" data-count="7" class="count-btn-poses font-semibold">7</button>
+                            <button type="button" data-count="8" class="count-btn-poses font-semibold">8</button>
+                            <button type="button" data-count="9" class="count-btn-poses font-semibold">9</button>
+                            <button type="button" data-count="10" class="count-btn-poses font-semibold">10</button>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            <i class="fas fa-lightbulb mr-1"></i>
+                            Pilih jumlah pose yang akan di-generate (1-10 variasi)
+                        </p>
+                    </div>
+
                     <div class="mt-6 text-center">
                         <button id="poses-selectPoseBtn" disabled class="bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-cyan-700 disabled:bg-gray-300 shadow-lg transition-all hover:shadow-xl active:scale-95">
                             <span class="flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 2 2 4-4"/><path d="m3 12 2 2 4-4"/><path d="M10 6h11"/><path d="M10 12h11"/><path d="M10 18h11"/></svg>
-                                Pilih 6 Pose
+                                Generate <span id="poses-count-text">4</span> Pose
                             </span>
                         </button>
                     </div>
@@ -12385,25 +12415,31 @@
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shadow-md bg-gradient-to-br from-indigo-600 to-purple-600">5</div>
                                         <h3 class="text-lg font-bold text-gray-800">Jumlah Variasi</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="food-selfie-count-selection" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-count="4" class="count-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2.5 rounded-lg border-2 border-gray-300 transition-all text-sm font-medium">
-                                            4 Images
-                                        </button>
-                                        <button type="button" data-count="6" class="count-btn count-selected bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 py-2.5 rounded-lg border-2 border-indigo-600 transition-all text-sm font-bold shadow-md">
-                                            6 Images
-                                        </button>
-                                        <button type="button" data-count="8" class="count-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2.5 rounded-lg border-2 border-gray-300 transition-all text-sm font-medium">
-                                            8 Images
-                                        </button>
+                                    <div id="food-selfie-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-count="1" class="count-btn-foodselfie font-semibold">1</button>
+                                        <button type="button" data-count="2" class="count-btn-foodselfie font-semibold">2</button>
+                                        <button type="button" data-count="3" class="count-btn-foodselfie font-semibold">3</button>
+                                        <button type="button" data-count="4" class="count-btn-foodselfie selected font-bold" style="background: linear-gradient(135deg, #4f46e5, #9333ea); color: white; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);">4</button>
+                                        <button type="button" data-count="5" class="count-btn-foodselfie font-semibold">5</button>
+                                        <button type="button" data-count="6" class="count-btn-foodselfie font-semibold">6</button>
+                                        <button type="button" data-count="7" class="count-btn-foodselfie font-semibold">7</button>
+                                        <button type="button" data-count="8" class="count-btn-foodselfie font-semibold">8</button>
+                                        <button type="button" data-count="9" class="count-btn-foodselfie font-semibold">9</button>
+                                        <button type="button" data-count="10" class="count-btn-foodselfie font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <i class="fas fa-lightbulb mr-1"></i>
+                                        Pilih jumlah foto yang akan di-generate (1-10 variasi)
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
                                 <button id="food-selfie-generate-btn" class="w-full text-white font-bold py-4 px-8 rounded-2xl flex items-center justify-center text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden group bg-gradient-to-r from-indigo-600 to-purple-600" disabled>
                                     <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                                     <i class="fas fa-sparkles mr-3 text-xl relative z-10"></i>
-                                    <span class="relative z-10">Generate <span id="food-selfie-count-text">6</span> Images</span>
+                                    <span class="relative z-10">Generate <span id="food-selfie-count-text">4</span> Images</span>
                                 </button>
                             </div>
                         </div>
@@ -12573,26 +12609,29 @@
                                 <div class="flex items-center gap-2 mb-3">
                                     <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-lg">6</div>
                                     <h2 class="text-xl font-semibold text-gray-800">Jumlah Scene</h2>
+                                    <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                 </div>
-                                <div id="review-count-selection" class="grid grid-cols-3 gap-3">
-                                    <button type="button" class="count-btn-review flex items-center justify-center gap-2 p-3 border-2 border-gray-200 rounded-xl hover:border-indigo-400 transition-all active:scale-95" data-count="4">
-                                        <span class="font-bold text-lg">4</span>
-                                        <span class="font-medium text-sm">Scene</span>
-                                    </button>
-                                    <button type="button" class="count-btn-review selected flex items-center justify-center gap-2 p-3 border-2 rounded-xl transition-all active:scale-95" data-count="7" style="border-color: #6366f1; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);">
-                                        <span class="font-bold text-lg">7</span>
-                                        <span class="font-medium text-sm">Scene</span>
-                                    </button>
-                                    <button type="button" class="count-btn-review flex items-center justify-center gap-2 p-3 border-2 border-gray-200 rounded-xl hover:border-indigo-400 transition-all active:scale-95" data-count="10">
-                                        <span class="font-bold text-lg">10</span>
-                                        <span class="font-medium text-sm">Scene</span>
-                                    </button>
+                                <div id="review-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                    <button type="button" class="count-btn-review font-semibold" data-count="1">1</button>
+                                    <button type="button" class="count-btn-review font-semibold" data-count="2">2</button>
+                                    <button type="button" class="count-btn-review font-semibold" data-count="3">3</button>
+                                    <button type="button" class="count-btn-review selected font-bold" data-count="4" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);">4</button>
+                                    <button type="button" class="count-btn-review font-semibold" data-count="5">5</button>
+                                    <button type="button" class="count-btn-review font-semibold" data-count="6">6</button>
+                                    <button type="button" class="count-btn-review font-semibold" data-count="7">7</button>
+                                    <button type="button" class="count-btn-review font-semibold" data-count="8">8</button>
+                                    <button type="button" class="count-btn-review font-semibold" data-count="9">9</button>
+                                    <button type="button" class="count-btn-review font-semibold" data-count="10">10</button>
                                 </div>
+                                <p class="text-xs text-gray-500 mt-2">
+                                    <i class="fas fa-lightbulb mr-1"></i>
+                                    Pilih jumlah scene review yang akan di-generate (1-10 variasi)
+                                </p>
                             </div>
 
                             <button id="review-generate-btn" class="w-full btn-primary font-bold py-4 px-6 rounded-xl flex items-center justify-center text-lg shadow-xl" disabled>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                                <span>Buat <span id="review-count-text">7</span> Scene Review</span>
+                                <span>Buat <span id="review-count-text">4</span> Scene Review</span>
                             </button>
                         </div>
                     </div>
@@ -12768,26 +12807,29 @@
                                 <div class="flex items-center gap-2 mb-3">
                                     <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 text-white font-bold text-sm shadow-lg">6</div>
                                     <h2 class="text-xl font-semibold text-gray-800">Jumlah Scene</h2>
+                                    <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                 </div>
-                                <div id="skincare-count-selection" class="grid grid-cols-3 gap-3">
-                                    <button type="button" class="count-btn-skincare flex items-center justify-center gap-2 p-3 border-2 border-gray-200 rounded-xl hover:border-pink-400 transition-all active:scale-95" data-count="4">
-                                        <span class="font-bold text-lg">4</span>
-                                        <span class="font-medium text-sm">Scene</span>
-                                    </button>
-                                    <button type="button" class="count-btn-skincare selected flex items-center justify-center gap-2 p-3 border-2 rounded-xl transition-all active:scale-95" data-count="7" style="border-color: #ec4899; background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);">
-                                        <span class="font-bold text-lg">7</span>
-                                        <span class="font-medium text-sm">Scene</span>
-                                    </button>
-                                    <button type="button" class="count-btn-skincare flex items-center justify-center gap-2 p-3 border-2 border-gray-200 rounded-xl hover:border-pink-400 transition-all active:scale-95" data-count="10">
-                                        <span class="font-bold text-lg">10</span>
-                                        <span class="font-medium text-sm">Scene</span>
-                                    </button>
+                                <div id="skincare-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="1">1</button>
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="2">2</button>
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="3">3</button>
+                                    <button type="button" class="count-btn-skincare selected font-bold" data-count="4" style="background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);">4</button>
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="5">5</button>
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="6">6</button>
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="7">7</button>
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="8">8</button>
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="9">9</button>
+                                    <button type="button" class="count-btn-skincare font-semibold" data-count="10">10</button>
                                 </div>
+                                <p class="text-xs text-gray-500 mt-2">
+                                    <i class="fas fa-lightbulb mr-1"></i>
+                                    Pilih jumlah scene skincare yang akan di-generate (1-10 variasi)
+                                </p>
                             </div>
 
                             <button id="skincare-generate-btn" class="w-full btn-primary font-bold py-4 px-6 rounded-xl flex items-center justify-center text-lg shadow-xl hover:shadow-2xl transition-all bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700" disabled>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                                <span>Buat <span id="skincare-count-text">7</span> Scene Skincare Review</span>
+                                <span>Buat <span id="skincare-count-text">4</span> Scene Skincare Review</span>
                             </button>
                         </div>
                     </div>
@@ -12909,21 +12951,24 @@
                         <div class="flex items-center gap-2 mb-4">
                             <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 text-white font-bold text-sm shadow-lg">6</div>
                             <h2 class="text-xl font-semibold text-gray-800">Jumlah Scene</h2>
+                            <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                         </div>
-                        <div id="food-count-selection" class="grid grid-cols-3 gap-3">
-                            <button type="button" class="count-btn-food flex items-center justify-center gap-2 p-3 border-2 border-gray-200 rounded-xl hover:border-orange-400 transition-all active:scale-95" data-count="4">
-                                <span class="font-bold text-lg">4</span>
-                                <span class="font-medium text-sm">Scene</span>
-                            </button>
-                            <button type="button" class="count-btn-food selected flex items-center justify-center gap-2 p-3 border-2 rounded-xl transition-all active:scale-95" data-count="7" style="border-color: #f97316; background: linear-gradient(135deg, #f97316, #ea580c); color: white; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);">
-                                <span class="font-bold text-lg">7</span>
-                                <span class="font-medium text-sm">Scene</span>
-                            </button>
-                            <button type="button" class="count-btn-food flex items-center justify-center gap-2 p-3 border-2 border-gray-200 rounded-xl hover:border-orange-400 transition-all active:scale-95" data-count="10">
-                                <span class="font-bold text-lg">10</span>
-                                <span class="font-medium text-sm">Scene</span>
-                            </button>
+                        <div id="food-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                            <button type="button" class="count-btn-food font-semibold" data-count="1">1</button>
+                            <button type="button" class="count-btn-food font-semibold" data-count="2">2</button>
+                            <button type="button" class="count-btn-food font-semibold" data-count="3">3</button>
+                            <button type="button" class="count-btn-food selected font-bold" data-count="4" style="background: linear-gradient(135deg, #f97316, #ea580c); color: white; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);">4</button>
+                            <button type="button" class="count-btn-food font-semibold" data-count="5">5</button>
+                            <button type="button" class="count-btn-food font-semibold" data-count="6">6</button>
+                            <button type="button" class="count-btn-food font-semibold" data-count="7">7</button>
+                            <button type="button" class="count-btn-food font-semibold" data-count="8">8</button>
+                            <button type="button" class="count-btn-food font-semibold" data-count="9">9</button>
+                            <button type="button" class="count-btn-food font-semibold" data-count="10">10</button>
                         </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            <i class="fas fa-lightbulb mr-1"></i>
+                            Pilih jumlah scene food review yang akan di-generate (1-10 variasi)
+                        </p>
                     </div>
 
                     <!-- Generate Button -->
@@ -12932,7 +12977,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
-                            <span>Buat <span id="food-count-text">7</span> Scene Food Review</span>
+                            <span>Buat <span id="food-count-text">4</span> Scene Food Review</span>
                         </button>
                     </div>
 
@@ -29588,14 +29633,20 @@ Create a cinematic video prompt for this product image titled "${title}". Make i
                 if (!button) return;
 
                 // Remove selected state from all buttons
-                document.querySelectorAll('#tryon-count-selection .count-btn').forEach(btn => {
-                    btn.classList.remove('count-selected', 'bg-gradient-to-r', 'from-teal-500', 'to-lime-500', 'text-white', 'border-teal-500', 'font-bold', 'shadow-md');
-                    btn.classList.add('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
+                document.querySelectorAll('#tryon-count-selection .option-btn-tryon').forEach(btn => {
+                    btn.classList.remove('selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
                 });
 
                 // Add selected state to clicked button
-                button.classList.remove('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
-                button.classList.add('count-selected', 'bg-gradient-to-r', 'from-teal-500', 'to-lime-500', 'text-white', 'border-teal-500', 'font-bold', 'shadow-md');
+                button.classList.remove('font-semibold');
+                button.classList.add('selected', 'font-bold');
+                button.style.background = 'linear-gradient(135deg, #14b8a6, #84cc16)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(20, 184, 166, 0.3)';
 
                 // Update count
                 selectedCount = parseInt(button.dataset.count, 10);
@@ -29883,10 +29934,41 @@ CRITICAL: The model must be clearly wearing/using the product in the specified a
         const posesSelectionCounter = document.getElementById('poses-selectionCounter');
         const posesCustomPoseInput = document.getElementById('poses-customPoseInput');
         const posesDownloadAllBtn = document.getElementById('poses-download-all-btn');
+        const posesCountSelection = document.getElementById('poses-count-selection');
+        const posesCountText = document.getElementById('poses-count-text');
         let posesUploadedFileAsDataUrl = null;
         let generatedPosesImages = [];
+        let selectedPosesCount = 4;
         const ALL_POSES = ['Pose fashion dinamis dengan satu tangan di pinggul dan tangan lainnya diangkat ke atas', 'Pose klasik dengan tangan di saku celana', 'Menyender ke dinding dengan santai, satu kaki ditekuk', 'Pose fashion dinamis membentuk huruf S dengan tubuh', 'Berdiri tegak dengan tatapan kuat, tangan menyilang di dada', 'Pose contrapposto, berat badan pada satu kaki, pinggul miring', 'Berdiri dengan kaki terbuka lebar, pose yang kuat dan percaya diri', 'Pose dari belakang (standing backpose), menoleh sedikit ke kamera', 'Pose dari samping (side profile), menatap lurus ke depan', 'Satu tangan di pinggul, tangan lain memegang kerah baju atau aksesori', 'Pose asimetris, satu bahu lebih tinggi dari yang lain', 'Pose minimalis, berdiri lurus menatap kamera dengan ekspresi netral', 'Pose berjalan, seolah-olah tertangkap kamera sedang melangkah', 'Pose melompat kecil dengan ekspresi ceria', 'Pose berputar (spinning), dengan gaun atau rambut yang bergerak', 'Pose berlari kecil dengan gaya candid', 'Duduk di kursi dengan elegan, satu kaki menyilang di atas yang lain', 'Duduk di lantai dengan santai, satu lutut ditekuk ke atas', 'Duduk di tangga, menatap ke arah atas atau bawah', 'Duduk di lantai dengan kaki lurus ke depan, menonjolkan sepatu', 'Beauty shot close-up, fokus pada wajah dan riasan, dengan senyuman lembut', 'Tangan membingkai wajah atau menyentuh rambut dengan lembut', 'Pose half-body yang elegan, satu tangan diangkat ke dekat dagu', 'Menatap tajam ke kamera dengan ekspresi serius (fierce)', 'Tertawa lepas, candid close-up', 'Satu tangan di bahu, tubuh sedikit miring ke samping', 'Melihat ke belakang lewat bahu (over-the-shoulder)', 'Pose dramatis dengan permainan bayangan yang kuat pada wajah atau tubuh', 'Berinteraksi dengan properti (misal: memegang topi, kacamata, atau tas)', 'Pose berbaring di lantai atau sofa dengan gaya high fashion'];
-        
+
+        // Count selection handler
+        if (posesCountSelection) {
+            posesCountSelection.addEventListener('click', (e) => {
+                const button = e.target.closest('[data-count]');
+                if (!button) return;
+
+                // Remove selected state from all buttons
+                document.querySelectorAll('#poses-count-selection .count-btn-poses').forEach(btn => {
+                    btn.classList.remove('selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
+                });
+
+                // Add selected state to clicked button
+                button.classList.remove('font-semibold');
+                button.classList.add('selected', 'font-bold');
+                button.style.background = 'linear-gradient(135deg, #06b6d4, #0891b2)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(6, 182, 212, 0.3)';
+
+                // Update count
+                selectedPosesCount = parseInt(button.dataset.count, 10);
+                if (posesCountText) posesCountText.textContent = selectedPosesCount;
+            });
+        }
+
         function initializePosesList() { 
             if(!posesPoseListContainer) return; 
             posesPoseListContainer.innerHTML = '';
@@ -29906,7 +29988,7 @@ CRITICAL: The model must be clearly wearing/using the product in the specified a
             posesSelectionCounter.textContent = count;
             posesGenerateBtn.disabled = count === 0;
             const allBoxes = posesPoseListContainer.querySelectorAll('input[type="checkbox"]');
-            allBoxes.forEach(box => { box.disabled = count >= 6 && !box.checked; });
+            allBoxes.forEach(box => { box.disabled = count >= selectedPosesCount && !box.checked; });
         }
         function posesShowError(message) { if(posesErrorMessage) { posesErrorMessage.textContent = message; posesErrorContainer.classList.remove('hidden');} }
         function posesHideError() { if(posesErrorContainer) posesErrorContainer.classList.add('hidden'); }
@@ -30908,7 +30990,7 @@ The result MUST fool even professional photographers - it should be IMPOSSIBLE t
         let styleMimeType = null;
         let selectedTheme = '';
         let selectedFoodSelfieRatio = '1:1';
-        let selectedCount = 6;
+        let selectedCount = 4;
         let generatedFoodImages = [];
         let currentGenerationParams = {};
 
@@ -31121,14 +31203,20 @@ The result MUST fool even professional photographers - it should be IMPOSSIBLE t
                 if (!button) return;
 
                 // Remove selected state from all buttons
-                document.querySelectorAll('#food-selfie-count-selection .count-btn').forEach(btn => {
-                    btn.classList.remove('count-selected', 'bg-gradient-to-r', 'from-indigo-600', 'to-purple-600', 'text-white', 'border-indigo-600', 'font-bold', 'shadow-md');
-                    btn.classList.add('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
+                document.querySelectorAll('#food-selfie-count-selection .count-btn-foodselfie').forEach(btn => {
+                    btn.classList.remove('selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
                 });
 
                 // Add selected state to clicked button
-                button.classList.remove('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
-                button.classList.add('count-selected', 'bg-gradient-to-r', 'from-indigo-600', 'to-purple-600', 'text-white', 'border-indigo-600', 'font-bold', 'shadow-md');
+                button.classList.remove('font-semibold');
+                button.classList.add('selected', 'font-bold');
+                button.style.background = 'linear-gradient(135deg, #4f46e5, #9333ea)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(79, 70, 229, 0.3)';
 
                 // Update count
                 selectedCount = parseInt(button.dataset.count, 10);
@@ -45255,7 +45343,7 @@ OUTPUT: A stunning, photorealistic image showing the "after" state that demonstr
         let reviewProductImages = [];
         let reviewModelImageBase64 = null;
         let reviewModelImageMimeType = null;
-        let selectedReviewCount = 7; // Default count
+        let selectedReviewCount = 4; // Default count
 
         function updateReviewButtonState() {
             reviewGenerateBtn.disabled = reviewProductImages.length === 0 || !reviewProductDescInput.value.trim();
@@ -46162,7 +46250,7 @@ Include:
         let skincareProductImages = [];
         let skincareModelImageBase64 = null;
         let skincareModelImageMimeType = null;
-        let selectedSkincareCount = 7; // Default count
+        let selectedSkincareCount = 4; // Default count
         let selectedSkincareTheme = 'professional-commercial'; // Default theme
 
         // Theme descriptions for prompt generation
@@ -47243,7 +47331,7 @@ Include:
         let foodProductImages = [];
         let foodModelImageBase64 = null;
         let foodModelImageMimeType = null;
-        let selectedFoodCount = 7;
+        let selectedFoodCount = 4;
 
         function updateFoodButtonState() {
             foodGenerateBtn.disabled = foodProductImages.length === 0 || !foodProductDescInput.value.trim();
