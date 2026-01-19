@@ -10292,18 +10292,24 @@
                             <div class="flex items-center gap-3 mb-3">
                                 <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 text-white font-bold text-sm shadow-lg">6</div>
                                 <label class="text-xl font-semibold text-gray-800">Jumlah Variasi</label>
+                                <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                             </div>
-                            <div id="karikatur-count-options" class="grid grid-cols-3 gap-3">
-                                <button type="button" data-count="4" class="option-btn-karikatur selected">
-                                    <span>4 Gambar</span>
-                                </button>
-                                <button type="button" data-count="6" class="option-btn-karikatur">
-                                    <span>6 Gambar</span>
-                                </button>
-                                <button type="button" data-count="8" class="option-btn-karikatur">
-                                    <span>8 Gambar</span>
-                                </button>
+                            <div id="karikatur-count-options" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                <button type="button" data-count="1" class="option-btn-karikatur font-semibold">1</button>
+                                <button type="button" data-count="2" class="option-btn-karikatur font-semibold">2</button>
+                                <button type="button" data-count="3" class="option-btn-karikatur font-semibold">3</button>
+                                <button type="button" data-count="4" class="option-btn-karikatur selected font-bold" style="background: linear-gradient(135deg, #f97316, #eab308); color: white; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);">4</button>
+                                <button type="button" data-count="5" class="option-btn-karikatur font-semibold">5</button>
+                                <button type="button" data-count="6" class="option-btn-karikatur font-semibold">6</button>
+                                <button type="button" data-count="7" class="option-btn-karikatur font-semibold">7</button>
+                                <button type="button" data-count="8" class="option-btn-karikatur font-semibold">8</button>
+                                <button type="button" data-count="9" class="option-btn-karikatur font-semibold">9</button>
+                                <button type="button" data-count="10" class="option-btn-karikatur font-semibold">10</button>
                             </div>
+                            <p class="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                                <i class="fas fa-lightbulb text-yellow-500"></i>
+                                <span>Semakin banyak variasi = lebih banyak pilihan, tapi gunakan API Key lebih banyak</span>
+                            </p>
                         </div>
 
                         <!-- Step 7: Generate Button -->
@@ -10844,17 +10850,40 @@
                         </div>
 
                         <div>
-                            <h2 class="text-xl font-semibold mb-3 text-gray-800">4. Deskripsi Momen <span class="text-sm text-gray-400">(Opsional)</span></h2>
+                            <div class="flex items-center gap-2 mb-3">
+                                <h2 class="text-xl font-semibold text-gray-800">4. Jumlah Foto</h2>
+                                <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
+                            </div>
+                            <div id="halu-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                <button type="button" data-count="1" class="ratio-btn-halu font-semibold">1</button>
+                                <button type="button" data-count="2" class="ratio-btn-halu font-semibold">2</button>
+                                <button type="button" data-count="3" class="ratio-btn-halu font-semibold">3</button>
+                                <button type="button" data-count="4" class="ratio-btn-halu selected font-bold" style="background: linear-gradient(135deg, #ec4899, #db2777); color: white; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);">4</button>
+                                <button type="button" data-count="5" class="ratio-btn-halu font-semibold">5</button>
+                                <button type="button" data-count="6" class="ratio-btn-halu font-semibold">6</button>
+                                <button type="button" data-count="7" class="ratio-btn-halu font-semibold">7</button>
+                                <button type="button" data-count="8" class="ratio-btn-halu font-semibold">8</button>
+                                <button type="button" data-count="9" class="ratio-btn-halu font-semibold">9</button>
+                                <button type="button" data-count="10" class="ratio-btn-halu font-semibold">10</button>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                                <i class="fas fa-lightbulb text-yellow-500"></i>
+                                <span>Semakin banyak foto = lebih banyak pilihan, tapi gunakan API Key lebih banyak</span>
+                            </p>
+                        </div>
+
+                        <div>
+                            <h2 class="text-xl font-semibold mb-3 text-gray-800">5. Deskripsi Momen <span class="text-sm text-gray-400">(Opsional)</span></h2>
                             <textarea id="halu-moment-desc-input" rows="3" class="w-full p-3 bg-pink-50 border-pink-200 text-gray-800 rounded-lg" placeholder="Contoh: Kencan pertama..."></textarea>
                         </div>
                         
                         <div>
-                            <h2 class="text-xl font-semibold mb-3 text-gray-800">5. Gaya Foto <span class="text-sm text-gray-400">(Opsional)</span></h2>
+                            <h2 class="text-xl font-semibold mb-3 text-gray-800">6. Gaya Foto <span class="text-sm text-gray-400">(Opsional)</span></h2>
                             <textarea id="halu-photo-style-input" rows="3" class="w-full p-3 bg-pink-50 border-pink-200 text-gray-800 rounded-lg" placeholder="Contoh: Gaya foto polaroid..."></textarea>
                         </div>
 
                         <button id="halu-generate-btn" class="w-full btn-primary font-bold py-3 px-4 rounded-lg flex items-center justify-center text-lg" disabled>
-                            <span>Buat 6 Foto Halu</span>
+                            <span>Buat <span id="halu-count-text">4</span> Foto Halu</span>
                         </button>
                     </div>
                 </div>
@@ -18256,12 +18285,24 @@
                                     <div class="flex items-center gap-2 mb-3">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 text-white font-bold text-sm shadow-lg">4</div>
                                         <h3 class="text-base font-semibold text-gray-800">Jumlah Variasi</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="expression-count-options" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-value="3" class="option-btn-expression">3 Variasi</button>
-                                        <button type="button" data-value="4" class="option-btn-expression selected">4 Variasi</button>
-                                        <button type="button" data-value="6" class="option-btn-expression">6 Variasi</button>
+                                    <div id="expression-count-options" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-value="1" class="option-btn-expression font-semibold">1</button>
+                                        <button type="button" data-value="2" class="option-btn-expression font-semibold">2</button>
+                                        <button type="button" data-value="3" class="option-btn-expression font-semibold">3</button>
+                                        <button type="button" data-value="4" class="option-btn-expression selected font-bold" style="background: linear-gradient(135deg, #3b82f6, #06b6d4); color: white; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);">4</button>
+                                        <button type="button" data-value="5" class="option-btn-expression font-semibold">5</button>
+                                        <button type="button" data-value="6" class="option-btn-expression font-semibold">6</button>
+                                        <button type="button" data-value="7" class="option-btn-expression font-semibold">7</button>
+                                        <button type="button" data-value="8" class="option-btn-expression font-semibold">8</button>
+                                        <button type="button" data-value="9" class="option-btn-expression font-semibold">9</button>
+                                        <button type="button" data-value="10" class="option-btn-expression font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                                        <i class="fas fa-lightbulb text-yellow-500"></i>
+                                        <span>Semakin banyak variasi = lebih banyak pilihan, tapi gunakan API Key lebih banyak</span>
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
@@ -18427,12 +18468,24 @@
                                     <div class="flex items-center gap-2 mb-3">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 text-white font-bold text-sm shadow-lg">4</div>
                                         <h3 class="text-base font-semibold text-gray-800">Jumlah Variasi</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="bgremover-count-options" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-value="3" class="option-btn-bgremover">3 Variasi</button>
-                                        <button type="button" data-value="4" class="option-btn-bgremover selected">4 Variasi</button>
-                                        <button type="button" data-value="6" class="option-btn-bgremover">6 Variasi</button>
+                                    <div id="bgremover-count-options" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-value="1" class="option-btn-bgremover font-semibold">1</button>
+                                        <button type="button" data-value="2" class="option-btn-bgremover font-semibold">2</button>
+                                        <button type="button" data-value="3" class="option-btn-bgremover font-semibold">3</button>
+                                        <button type="button" data-value="4" class="option-btn-bgremover selected font-bold" style="background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">4</button>
+                                        <button type="button" data-value="5" class="option-btn-bgremover font-semibold">5</button>
+                                        <button type="button" data-value="6" class="option-btn-bgremover font-semibold">6</button>
+                                        <button type="button" data-value="7" class="option-btn-bgremover font-semibold">7</button>
+                                        <button type="button" data-value="8" class="option-btn-bgremover font-semibold">8</button>
+                                        <button type="button" data-value="9" class="option-btn-bgremover font-semibold">9</button>
+                                        <button type="button" data-value="10" class="option-btn-bgremover font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                                        <i class="fas fa-lightbulb text-yellow-500"></i>
+                                        <span>Semakin banyak variasi = lebih banyak pilihan, tapi gunakan API Key lebih banyak</span>
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
@@ -18587,12 +18640,24 @@
                                     <div class="flex items-center gap-2 mb-3">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-sky-500 to-sky-600 text-white font-bold text-sm shadow-lg">4</div>
                                         <h3 class="text-base font-semibold text-gray-800">Jumlah Variasi</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="extender-count-options" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-value="3" class="option-btn-extender">3 Variasi</button>
-                                        <button type="button" data-value="4" class="option-btn-extender selected">4 Variasi</button>
-                                        <button type="button" data-value="6" class="option-btn-extender">6 Variasi</button>
+                                    <div id="extender-count-options" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-value="1" class="option-btn-extender font-semibold">1</button>
+                                        <button type="button" data-value="2" class="option-btn-extender font-semibold">2</button>
+                                        <button type="button" data-value="3" class="option-btn-extender font-semibold">3</button>
+                                        <button type="button" data-value="4" class="option-btn-extender selected font-bold" style="background: linear-gradient(135deg, #0ea5e9, #0284c7); color: white; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);">4</button>
+                                        <button type="button" data-value="5" class="option-btn-extender font-semibold">5</button>
+                                        <button type="button" data-value="6" class="option-btn-extender font-semibold">6</button>
+                                        <button type="button" data-value="7" class="option-btn-extender font-semibold">7</button>
+                                        <button type="button" data-value="8" class="option-btn-extender font-semibold">8</button>
+                                        <button type="button" data-value="9" class="option-btn-extender font-semibold">9</button>
+                                        <button type="button" data-value="10" class="option-btn-extender font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                                        <i class="fas fa-lightbulb text-yellow-500"></i>
+                                        <span>Semakin banyak variasi = lebih banyak pilihan, tapi gunakan API Key lebih banyak</span>
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
@@ -28128,10 +28193,13 @@ Jawab pertanyaan user dengan helpful dan informatif!`;
         const generateBtn = document.getElementById('halu-generate-btn');
         const bRollGrid = document.getElementById('halu-b-roll-grid');
         const haluRatioSelection = document.getElementById('halu-ratio-selection');
+        const haluCountSelection = document.getElementById('halu-count-selection');
+        const haluCountText = document.getElementById('halu-count-text');
 
         let uploadedImageBase64 = null, imageMimeType = null;
         let uploadedIdolImageBase64 = null, idolImageMimeType = null;
         let selectedHaluRatio = '16:9';
+        let selectedHaluCount = 4;
 
         function updateButtonState() {
             generateBtn.disabled = !uploadedImageBase64 || !uploadedIdolImageBase64;
@@ -28176,10 +28244,37 @@ Jawab pertanyaan user dengan helpful dan informatif!`;
                 }
             });
         }
-        
+
+        // Count selection handler
+        if (haluCountSelection) {
+            haluCountSelection.addEventListener('click', (e) => {
+                const button = e.target.closest('button[data-count]');
+                if (!button) return;
+
+                // Remove selected state from all buttons
+                haluCountSelection.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
+                });
+
+                // Add selected state to clicked button
+                button.classList.add('selected', 'font-bold');
+                button.classList.remove('font-semibold');
+                button.style.background = 'linear-gradient(135deg, #ec4899, #db2777)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(236, 72, 153, 0.3)';
+
+                selectedHaluCount = parseInt(button.dataset.count);
+                if (haluCountText) haluCountText.textContent = selectedHaluCount;
+            });
+        }
+
         const createInitialPlaceholders = () => {
             bRollGrid.innerHTML = '';
-            for(let i = 1; i <= 6; i++) {
+            for(let i = 1; i <= selectedHaluCount; i++) {
                 const card = document.createElement('div');
                 card.className = 'b-roll-card card p-4 flex flex-col justify-between animate-pulse';
                 card.innerHTML = `<div class="h-6 bg-pink-200 rounded w-3/4 mb-4"></div><div class="mt-4 aspect-square bg-pink-100 rounded-md"></div>`;
@@ -28212,7 +28307,7 @@ Jawab pertanyaan user dengan helpful dan informatif!`;
                 console.warn('[Halu Idol] Internal error:', error.message);
             } finally {
                 generateBtn.disabled = false;
-                generateBtn.innerHTML = `<span>Buat 6 Foto Halu</span>`;
+                generateBtn.innerHTML = `<span>Buat <span id="halu-count-text">${selectedHaluCount}</span> Foto Halu</span>`;
             }
         });
 
@@ -28220,7 +28315,7 @@ Jawab pertanyaan user dengan helpful dan informatif!`;
              // Migrate to SDK - Text generation for photo concepts
              console.log('🔍 Halu Idol - Analyzing photos with SDK');
 
-             const systemPrompt = `You are an AI photo blending assistant. Analyze a fan's photo and an idol's photo. Generate 6 distinct, creative photo concepts where they appear together as a couple. For each, provide a short title (in Indonesian) and a detailed prompt (in English) for an AI image generator. Respond ONLY with a valid JSON array of 6 objects with 'title' and 'prompt' keys.`;
+             const systemPrompt = `You are an AI photo blending assistant. Analyze a fan's photo and an idol's photo. Generate ${selectedHaluCount} distinct, creative photo concepts where they appear together as a couple. For each, provide a short title (in Indonesian) and a detailed prompt (in English) for an AI image generator. Respond ONLY with a valid JSON array of ${selectedHaluCount} objects with 'title' and 'prompt' keys.`;
              let userQuery = `Moment: "${momentDescInput.value.trim()}"\nStyle: "${photoStyleInput.value.trim()}"\nAspect Ratio: "${selectedHaluRatio}"`;
              const parts = [{ text: userQuery }, { inlineData: { mimeType: imageMimeType, data: uploadedImageBase64 } }, { inlineData: { mimeType: idolImageMimeType, data: uploadedIdolImageBase64 } }];
 
@@ -50341,8 +50436,22 @@ The final result should be a complete photo booth image ready to print or share,
             const button = e.target.closest('button');
             if (!button) return;
 
-            expressionCountOptions.querySelectorAll('button').forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
+            // Remove selected state from all buttons
+            expressionCountOptions.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('selected', 'font-bold');
+                btn.classList.add('font-semibold');
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.boxShadow = '';
+            });
+
+            // Add selected state to clicked button
+            button.classList.add('selected', 'font-bold');
+            button.classList.remove('font-semibold');
+            button.style.background = 'linear-gradient(135deg, #3b82f6, #06b6d4)';
+            button.style.color = 'white';
+            button.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.3)';
+
             selectedCount = parseInt(button.dataset.value);
         });
 
@@ -50824,8 +50933,22 @@ The result should be a natural-looking photo where only the facial expression ha
             const button = e.target.closest('button');
             if (!button) return;
 
-            karikaturCountOptions.querySelectorAll('button').forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
+            // Remove selected state from all buttons
+            karikaturCountOptions.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('selected', 'font-bold');
+                btn.classList.add('font-semibold');
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.boxShadow = '';
+            });
+
+            // Add selected state to clicked button
+            button.classList.add('selected', 'font-bold');
+            button.classList.remove('font-semibold');
+            button.style.background = 'linear-gradient(135deg, #f97316, #eab308)';
+            button.style.color = 'white';
+            button.style.boxShadow = '0 4px 12px rgba(249, 115, 22, 0.3)';
+
             selectedCount = parseInt(button.dataset.count);
         });
 
@@ -53025,10 +53148,28 @@ CRITICAL: Banner harus PROFESSIONAL, eye-catching, dan optimized untuk ${selecte
             if (btn) selectedRatio = btn.dataset.value;
         });
 
-        // Listen to count changes
+        // Count selection handler
         bgremoverCountOptions.addEventListener('click', (e) => {
-            const btn = e.target.closest('[data-value]');
-            if (btn) selectedCount = parseInt(btn.dataset.value);
+            const button = e.target.closest('button');
+            if (!button) return;
+
+            // Remove selected state from all buttons
+            bgremoverCountOptions.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('selected', 'font-bold');
+                btn.classList.add('font-semibold');
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.boxShadow = '';
+            });
+
+            // Add selected state to clicked button
+            button.classList.add('selected', 'font-bold');
+            button.classList.remove('font-semibold');
+            button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            button.style.color = 'white';
+            button.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.3)';
+
+            selectedCount = parseInt(button.dataset.value);
         });
 
         // Generate button click handler
@@ -53400,13 +53541,29 @@ The result MUST show complete background replacement with professional quality s
             }
         });
 
-        // Listen to count changes
+        // Count selection handler
         countOptions.addEventListener('click', (e) => {
-            const btn = e.target.closest('[data-value]');
-            if (btn) {
-                selectedCount = parseInt(btn.dataset.value, 10);
-                console.log('Count selected:', selectedCount);
-            }
+            const button = e.target.closest('button');
+            if (!button) return;
+
+            // Remove selected state from all buttons
+            countOptions.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('selected', 'font-bold');
+                btn.classList.add('font-semibold');
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.boxShadow = '';
+            });
+
+            // Add selected state to clicked button
+            button.classList.add('selected', 'font-bold');
+            button.classList.remove('font-semibold');
+            button.style.background = 'linear-gradient(135deg, #0ea5e9, #0284c7)';
+            button.style.color = 'white';
+            button.style.boxShadow = '0 4px 12px rgba(14, 165, 233, 0.3)';
+
+            selectedCount = parseInt(button.dataset.value, 10);
+            console.log('Count selected:', selectedCount);
         });
 
         // Setup image upload with HEIC support (using helper function for mobile compatibility)
