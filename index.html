@@ -12017,6 +12017,32 @@
                                         <div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shadow-md" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
                                             4
                                         </div>
+                                        <h3 class="text-lg font-bold text-gray-800">Jumlah Foto</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
+                                    </div>
+                                    <div id="family-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-count="1" class="option-btn-family font-semibold">1</button>
+                                        <button type="button" data-count="2" class="option-btn-family font-semibold">2</button>
+                                        <button type="button" data-count="3" class="option-btn-family font-semibold">3</button>
+                                        <button type="button" data-count="4" class="option-btn-family font-bold selected" style="background: linear-gradient(135deg, #14b8a6, #0d9488); color: white; box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);">4</button>
+                                        <button type="button" data-count="5" class="option-btn-family font-semibold">5</button>
+                                        <button type="button" data-count="6" class="option-btn-family font-semibold">6</button>
+                                        <button type="button" data-count="7" class="option-btn-family font-semibold">7</button>
+                                        <button type="button" data-count="8" class="option-btn-family font-semibold">8</button>
+                                        <button type="button" data-count="9" class="option-btn-family font-semibold">9</button>
+                                        <button type="button" data-count="10" class="option-btn-family font-semibold">10</button>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <i class="fas fa-lightbulb mr-1"></i>
+                                        Pilih jumlah foto yang akan di-generate (1-10 variasi)
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shadow-md" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+                                            5
+                                        </div>
                                         <h3 class="text-lg font-bold text-gray-800">Pilih Tema</h3>
                                     </div>
                                     <div class="max-h-96 overflow-y-auto pr-2 space-y-3">
@@ -12078,7 +12104,7 @@
                                 <button id="family-generate-btn" class="w-full text-white font-bold py-4 px-8 rounded-2xl flex items-center justify-center text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden group" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
                                     <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                                     <i class="fas fa-sparkles mr-3 text-xl relative z-10"></i>
-                                    <span class="relative z-10">Buat 6 Foto Keluarga</span>
+                                    <span class="relative z-10">Buat <span id="family-count-text">4</span> Foto Keluarga</span>
                                 </button>
                             </div>
                         </div>
@@ -12093,7 +12119,7 @@
                             <div id="family-results-header" class="hidden mb-6 flex items-center justify-between">
                                 <h3 class="text-xl font-bold" style="color: #0d9488;">
                                     <i class="fas fa-check-circle mr-2"></i>
-                                    <span id="family-result-count">6</span> Foto Berhasil Dibuat
+                                    <span id="family-result-count">4</span> Foto Berhasil Dibuat
                                 </h3>
                                 <button id="family-download-all-btn" class="px-6 py-2 rounded-lg flex items-center gap-2 font-semibold text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all" style="background: linear-gradient(135deg, #14b8a6, #0d9488);">
                                     <i class="fas fa-download"></i>
@@ -13368,24 +13394,30 @@
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm shadow-lg" style="background: linear-gradient(135deg, #a855f7, #ec4899);">5</div>
                                         <h3 class="text-lg font-bold text-gray-800">Jumlah Foto</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="profesi-count-selection" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-count="4" class="profesi-count-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2.5 rounded-lg border-2 border-gray-300 transition-all text-sm font-medium">
-                                            4 Foto
-                                        </button>
-                                        <button type="button" data-count="7" class="profesi-count-btn profesi-count-selected bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-2.5 rounded-lg border-2 border-purple-500 transition-all text-sm font-bold shadow-md">
-                                            7 Foto
-                                        </button>
-                                        <button type="button" data-count="10" class="profesi-count-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2.5 rounded-lg border-2 border-gray-300 transition-all text-sm font-medium">
-                                            10 Foto
-                                        </button>
+                                    <div id="profesi-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-count="1" class="profesi-count-btn font-semibold">1</button>
+                                        <button type="button" data-count="2" class="profesi-count-btn font-semibold">2</button>
+                                        <button type="button" data-count="3" class="profesi-count-btn font-semibold">3</button>
+                                        <button type="button" data-count="4" class="profesi-count-btn profesi-count-selected font-bold" style="background: linear-gradient(135deg, #a855f7, #ec4899); color: white; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);">4</button>
+                                        <button type="button" data-count="5" class="profesi-count-btn font-semibold">5</button>
+                                        <button type="button" data-count="6" class="profesi-count-btn font-semibold">6</button>
+                                        <button type="button" data-count="7" class="profesi-count-btn font-semibold">7</button>
+                                        <button type="button" data-count="8" class="profesi-count-btn font-semibold">8</button>
+                                        <button type="button" data-count="9" class="profesi-count-btn font-semibold">9</button>
+                                        <button type="button" data-count="10" class="profesi-count-btn font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <i class="fas fa-lightbulb mr-1"></i>
+                                        Pilih jumlah foto yang akan di-generate (1-10 variasi)
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
                                 <button id="profesi-generate-btn" class="w-full py-4 px-6 rounded-xl font-bold text-lg text-white shadow-lg transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);" disabled>
                                     <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                                    <span>Generate <span id="profesi-count-text">7</span> Foto Profesi</span>
+                                    <span>Generate <span id="profesi-count-text">4</span> Foto Profesi</span>
                                 </button>
                             </div>
                         </div>
@@ -16595,18 +16627,24 @@
                             <div class="flex items-center gap-2 mb-4">
                                 <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-rose-500 to-pink-500 text-white font-bold text-sm shadow-lg">5</div>
                                 <h3 class="text-xl font-bold text-gray-800">Jumlah Foto</h3>
+                                <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                             </div>
-                            <div id="maternity-count-selection" class="grid grid-cols-3 gap-3">
-                                <button type="button" data-count="4" class="count-btn-maternity">
-                                    4 Foto
-                                </button>
-                                <button type="button" data-count="6" class="count-btn-maternity count-selected">
-                                    6 Foto
-                                </button>
-                                <button type="button" data-count="8" class="count-btn-maternity">
-                                    8 Foto
-                                </button>
+                            <div id="maternity-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                <button type="button" data-count="1" class="count-btn-maternity font-semibold">1</button>
+                                <button type="button" data-count="2" class="count-btn-maternity font-semibold">2</button>
+                                <button type="button" data-count="3" class="count-btn-maternity font-semibold">3</button>
+                                <button type="button" data-count="4" class="count-btn-maternity count-selected font-bold" style="background: linear-gradient(135deg, #f43f5e, #ec4899); color: white; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);">4</button>
+                                <button type="button" data-count="5" class="count-btn-maternity font-semibold">5</button>
+                                <button type="button" data-count="6" class="count-btn-maternity font-semibold">6</button>
+                                <button type="button" data-count="7" class="count-btn-maternity font-semibold">7</button>
+                                <button type="button" data-count="8" class="count-btn-maternity font-semibold">8</button>
+                                <button type="button" data-count="9" class="count-btn-maternity font-semibold">9</button>
+                                <button type="button" data-count="10" class="count-btn-maternity font-semibold">10</button>
                             </div>
+                            <p class="text-xs text-gray-500 mt-2">
+                                <i class="fas fa-lightbulb mr-1"></i>
+                                Pilih jumlah foto yang akan di-generate (1-10 variasi)
+                            </p>
                         </div>
 
                         <!-- Step 6: Generate Button -->
@@ -16617,7 +16655,7 @@
                             </div>
                             <button id="maternity-generate-btn" disabled class="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg">
                                 <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                                Generate <span id="maternity-count-text">6</span> Foto Maternity
+                                Generate <span id="maternity-count-text">4</span> Foto Maternity
                             </button>
                             <p class="text-sm text-gray-500 text-center mt-2">
                                 <i class="fas fa-info-circle mr-1"></i>
@@ -16797,24 +16835,30 @@
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm shadow-lg" style="background: linear-gradient(135deg, #f43f5e, #ec4899);">6</div>
                                         <h3 class="text-lg font-bold text-gray-800">Jumlah Foto</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="wedding-count-selection" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-count="4" class="wedding-count-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2.5 rounded-lg border-2 border-gray-300 transition-all text-sm font-medium">
-                                            4 Foto
-                                        </button>
-                                        <button type="button" data-count="7" class="wedding-count-btn wedding-count-selected bg-gradient-to-r from-rose-500 to-pink-500 text-white px-3 py-2.5 rounded-lg border-2 border-rose-500 transition-all text-sm font-bold shadow-md">
-                                            7 Foto
-                                        </button>
-                                        <button type="button" data-count="10" class="wedding-count-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-2.5 rounded-lg border-2 border-gray-300 transition-all text-sm font-medium">
-                                            10 Foto
-                                        </button>
+                                    <div id="wedding-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-count="1" class="wedding-count-btn font-semibold">1</button>
+                                        <button type="button" data-count="2" class="wedding-count-btn font-semibold">2</button>
+                                        <button type="button" data-count="3" class="wedding-count-btn font-semibold">3</button>
+                                        <button type="button" data-count="4" class="wedding-count-btn wedding-count-selected font-bold" style="background: linear-gradient(135deg, #f43f5e, #ec4899); color: white; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);">4</button>
+                                        <button type="button" data-count="5" class="wedding-count-btn font-semibold">5</button>
+                                        <button type="button" data-count="6" class="wedding-count-btn font-semibold">6</button>
+                                        <button type="button" data-count="7" class="wedding-count-btn font-semibold">7</button>
+                                        <button type="button" data-count="8" class="wedding-count-btn font-semibold">8</button>
+                                        <button type="button" data-count="9" class="wedding-count-btn font-semibold">9</button>
+                                        <button type="button" data-count="10" class="wedding-count-btn font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <i class="fas fa-lightbulb mr-1"></i>
+                                        Pilih jumlah foto yang akan di-generate (1-10 variasi)
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
                                 <button id="wedding-generate-btn" class="w-full py-4 px-6 rounded-xl font-bold text-lg text-white shadow-lg transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100" style="background: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%);" disabled>
                                     <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                                    <span>Generate <span id="wedding-count-text">7</span> Foto Wedding</span>
+                                    <span>Generate <span id="wedding-count-text">4</span> Foto Wedding</span>
                                 </button>
                             </div>
                         </div>
@@ -17809,25 +17853,31 @@
                                     <div class="flex items-center gap-3 mb-4">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm shadow-lg" style="background: linear-gradient(135deg, #a855f7, #ec4899);">7</div>
                                         <h3 class="text-lg font-bold text-gray-800">Jumlah Foto</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
 
-                                    <div id="graduation-count-selection" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-count="4" class="count-btn-graduation">
-                                            4 Foto
-                                        </button>
-                                        <button type="button" data-count="6" class="count-btn-graduation count-selected">
-                                            6 Foto
-                                        </button>
-                                        <button type="button" data-count="8" class="count-btn-graduation">
-                                            8 Foto
-                                        </button>
+                                    <div id="graduation-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-count="1" class="count-btn-graduation font-semibold">1</button>
+                                        <button type="button" data-count="2" class="count-btn-graduation font-semibold">2</button>
+                                        <button type="button" data-count="3" class="count-btn-graduation font-semibold">3</button>
+                                        <button type="button" data-count="4" class="count-btn-graduation count-selected font-bold" style="background: linear-gradient(135deg, #a855f7, #ec4899); color: white; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);">4</button>
+                                        <button type="button" data-count="5" class="count-btn-graduation font-semibold">5</button>
+                                        <button type="button" data-count="6" class="count-btn-graduation font-semibold">6</button>
+                                        <button type="button" data-count="7" class="count-btn-graduation font-semibold">7</button>
+                                        <button type="button" data-count="8" class="count-btn-graduation font-semibold">8</button>
+                                        <button type="button" data-count="9" class="count-btn-graduation font-semibold">9</button>
+                                        <button type="button" data-count="10" class="count-btn-graduation font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <i class="fas fa-lightbulb mr-1"></i>
+                                        Pilih jumlah foto yang akan di-generate (1-10 variasi)
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
                                 <button type="button" id="graduation-generate-btn" class="w-full py-4 px-6 rounded-xl font-bold text-lg text-white shadow-lg transition-all" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);" disabled>
                                     <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                                    <span>Generate <span id="graduation-count-text">6</span> Foto Wisuda</span>
+                                    <span>Generate <span id="graduation-count-text">4</span> Foto Wisuda</span>
                                 </button>
                                 <p class="text-xs text-center text-gray-500">⏱️ Proses ~20-30 detik</p>
                             </div>
@@ -18027,12 +18077,24 @@
                                     <div class="flex items-center gap-2 mb-3">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 text-white font-bold text-sm shadow-lg">4</div>
                                         <h3 class="text-base font-semibold text-gray-800">Jumlah Foto</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="photo-booth-count-options" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-value="4" class="option-btn-booth">4 Foto</button>
-                                        <button type="button" data-value="6" class="option-btn-booth">6 Foto</button>
-                                        <button type="button" data-value="8" class="option-btn-booth selected">8 Foto</button>
+                                    <div id="photo-booth-count-options" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-value="1" class="option-btn-booth font-semibold">1</button>
+                                        <button type="button" data-value="2" class="option-btn-booth font-semibold">2</button>
+                                        <button type="button" data-value="3" class="option-btn-booth font-semibold">3</button>
+                                        <button type="button" data-value="4" class="option-btn-booth selected font-bold" style="background: linear-gradient(135deg, #9333ea, #ec4899); color: white; box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);">4</button>
+                                        <button type="button" data-value="5" class="option-btn-booth font-semibold">5</button>
+                                        <button type="button" data-value="6" class="option-btn-booth font-semibold">6</button>
+                                        <button type="button" data-value="7" class="option-btn-booth font-semibold">7</button>
+                                        <button type="button" data-value="8" class="option-btn-booth font-semibold">8</button>
+                                        <button type="button" data-value="9" class="option-btn-booth font-semibold">9</button>
+                                        <button type="button" data-value="10" class="option-btn-booth font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <i class="fas fa-lightbulb mr-1"></i>
+                                        Pilih jumlah foto yang akan di-generate (1-10 variasi)
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
@@ -23397,24 +23459,30 @@
                                 <div class="flex items-center gap-3 mb-4">
                                     <div class="flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm shadow-lg" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">8</div>
                                     <h3 class="text-lg font-bold text-gray-800">Jumlah Foto</h3>
+                                    <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                 </div>
-                                <div id="sketch-count-selection" class="grid grid-cols-3 gap-3">
-                                    <button type="button" data-count="4" class="sketch-count-btn">
-                                        4 Foto
-                                    </button>
-                                    <button type="button" data-count="6" class="sketch-count-btn sketch-count-selected">
-                                        6 Foto
-                                    </button>
-                                    <button type="button" data-count="8" class="sketch-count-btn">
-                                        8 Foto
-                                    </button>
+                                <div id="sketch-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                    <button type="button" data-count="1" class="sketch-count-btn font-semibold">1</button>
+                                    <button type="button" data-count="2" class="sketch-count-btn font-semibold">2</button>
+                                    <button type="button" data-count="3" class="sketch-count-btn font-semibold">3</button>
+                                    <button type="button" data-count="4" class="sketch-count-btn sketch-count-selected font-bold" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);">4</button>
+                                    <button type="button" data-count="5" class="sketch-count-btn font-semibold">5</button>
+                                    <button type="button" data-count="6" class="sketch-count-btn font-semibold">6</button>
+                                    <button type="button" data-count="7" class="sketch-count-btn font-semibold">7</button>
+                                    <button type="button" data-count="8" class="sketch-count-btn font-semibold">8</button>
+                                    <button type="button" data-count="9" class="sketch-count-btn font-semibold">9</button>
+                                    <button type="button" data-count="10" class="sketch-count-btn font-semibold">10</button>
                                 </div>
+                                <p class="text-xs text-gray-500 mt-2">
+                                    <i class="fas fa-lightbulb mr-1"></i>
+                                    Pilih jumlah foto yang akan di-generate (1-10 variasi)
+                                </p>
                             </div>
 
                             <!-- Generate Button -->
                             <button id="sketch-generate-btn" class="w-full py-4 px-6 rounded-xl font-bold text-lg text-white shadow-lg transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);" disabled>
                                 <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                                <span>Generate <span id="sketch-count-text">6</span> Foto Katalog</span>
+                                <span>Generate <span id="sketch-count-text">4</span> Foto Katalog</span>
                             </button>
 
                         </div>
@@ -30292,6 +30360,7 @@ CRITICAL: The model must be clearly wearing/using the product in the specified a
         let photoMimeTypes = [null, null]; // Will store mime types
         let customBackgroundData = null; // Optional background upload
         let selectedRatio = '3:4'; // Default aspect ratio
+        let selectedFamilyCount = 4; // Default count
         let generatedImages = []; // Store generated images for download all
         let currentTheme = ''; // Store current theme for regenerate
 
@@ -30476,6 +30545,35 @@ CRITICAL: The model must be clearly wearing/using the product in the specified a
             });
         }
 
+        // Count selection handler
+        const countSelection = document.getElementById('family-count-selection');
+        const countText = document.getElementById('family-count-text');
+        if (countSelection) {
+            countSelection.addEventListener('click', (e) => {
+                const button = e.target.closest('[data-count]');
+                if (!button) return;
+
+                // Remove selected state from all buttons
+                document.querySelectorAll('#family-count-selection .option-btn-family').forEach(btn => {
+                    btn.classList.remove('selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
+                });
+
+                // Add selected state to clicked button
+                button.classList.add('selected', 'font-bold');
+                button.classList.remove('font-semibold');
+                button.style.background = 'linear-gradient(135deg, #14b8a6, #0d9488)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(20, 184, 166, 0.3)';
+
+                selectedFamilyCount = parseInt(button.dataset.count, 10);
+                if (countText) countText.textContent = selectedFamilyCount;
+            });
+        }
+
         if (generateBtn) {
             generateBtn.addEventListener('click', async () => {
                 const uploadedFiles = photos.map((p, i) => ({ base64: p, mimeType: photoMimeTypes[i] })).filter(f => f.base64);
@@ -30516,7 +30614,7 @@ CRITICAL: The model must be clearly wearing/using the product in the specified a
                 resultImageContainer.innerHTML = '';
 
                 // Create placeholder cards with queue status
-                const totalCount = 6;
+                const totalCount = selectedFamilyCount;
                 for (let i = 1; i <= totalCount; i++) {
                     const card = document.createElement('div');
                     card.id = `family-card-${i}`;
@@ -32374,7 +32472,7 @@ REQUIREMENTS:
         // State
         let childImageData = null;
         let selectedRatio = '9:16';
-        let selectedCount = 7;
+        let selectedCount = 4;
         let generatedImages = [];
 
         const RANDOM_THEMES = [
@@ -32498,13 +32596,19 @@ REQUIREMENTS:
 
                 // Remove selected state from all buttons
                 document.querySelectorAll('.profesi-count-btn').forEach(btn => {
-                    btn.classList.remove('profesi-count-selected', 'bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white', 'border-purple-500', 'font-bold', 'shadow-md');
-                    btn.classList.add('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
+                    btn.classList.remove('profesi-count-selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
                 });
 
                 // Add selected state to clicked button
-                button.classList.remove('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
-                button.classList.add('profesi-count-selected', 'bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white', 'border-purple-500', 'font-bold', 'shadow-md');
+                button.classList.add('profesi-count-selected', 'font-bold');
+                button.classList.remove('font-semibold');
+                button.style.background = 'linear-gradient(135deg, #a855f7, #ec4899)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(168, 85, 247, 0.3)';
 
                 // Update count
                 selectedCount = parseInt(button.dataset.count, 10);
@@ -36742,7 +36846,7 @@ Generate a professionally restored photograph that clearly demonstrates signific
         let femaleImageData = null;
         let selectedType = 'wedding';
         let selectedRatio = '9:16';
-        let selectedCount = 7;
+        let selectedCount = 4;
         let generatedImages = [];
 
         const defaultThemes = [
@@ -36933,13 +37037,19 @@ Generate a professionally restored photograph that clearly demonstrates signific
 
                 // Remove selected state from all buttons
                 document.querySelectorAll('.wedding-count-btn').forEach(btn => {
-                    btn.classList.remove('wedding-count-selected', 'bg-gradient-to-r', 'from-rose-500', 'to-pink-500', 'text-white', 'border-rose-500', 'font-bold', 'shadow-md');
-                    btn.classList.add('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
+                    btn.classList.remove('wedding-count-selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
                 });
 
                 // Add selected state to clicked button
-                button.classList.remove('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
-                button.classList.add('wedding-count-selected', 'bg-gradient-to-r', 'from-rose-500', 'to-pink-500', 'text-white', 'border-rose-500', 'font-bold', 'shadow-md');
+                button.classList.add('wedding-count-selected', 'font-bold');
+                button.classList.remove('font-semibold');
+                button.style.background = 'linear-gradient(135deg, #f43f5e, #ec4899)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(244, 63, 94, 0.3)';
 
                 // Update count
                 selectedCount = parseInt(button.dataset.count, 10);
@@ -41657,7 +41767,7 @@ PENTING:
         let selectedBackground = 'pure-white';
         let selectedLighting = 'studio-soft';
         let selectedRatio = '1:1';
-        let selectedCount = 6;
+        let selectedCount = 4;
         let generatedImages = [];
 
         // Product type descriptions
@@ -41883,11 +41993,19 @@ PENTING:
 
                 // Remove selected state from all buttons
                 document.querySelectorAll('.sketch-count-btn').forEach(btn => {
-                    btn.classList.remove('sketch-count-selected');
+                    btn.classList.remove('sketch-count-selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
                 });
 
                 // Add selected state to clicked button
-                button.classList.add('sketch-count-selected');
+                button.classList.add('sketch-count-selected', 'font-bold');
+                button.classList.remove('font-semibold');
+                button.style.background = 'linear-gradient(135deg, #8b5cf6, #7c3aed)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.3)';
 
                 // Update count
                 selectedCount = parseInt(button.dataset.count, 10);
@@ -49697,7 +49815,7 @@ Respond ONLY with a valid JSON array of ${selectedAdsCount} objects, in sequenti
         let generatedImages = [];
         let selectedFrame = 'Classic Strip';
         let selectedRatio = '3:4';
-        let selectedCount = 8;
+        let selectedCount = 4;
 
         // Setup multiple image upload with HEIC support
         photoBoothInput.addEventListener('change', async (e) => {
@@ -49826,8 +49944,20 @@ Respond ONLY with a valid JSON array of ${selectedAdsCount} objects, in sequenti
             const button = e.target.closest('button');
             if (!button) return;
 
-            photoBoothCountOptions.querySelectorAll('button').forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
+            photoBoothCountOptions.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('selected', 'font-bold');
+                btn.classList.add('font-semibold');
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.boxShadow = '';
+            });
+
+            button.classList.add('selected', 'font-bold');
+            button.classList.remove('font-semibold');
+            button.style.background = 'linear-gradient(135deg, #9333ea, #ec4899)';
+            button.style.color = 'white';
+            button.style.boxShadow = '0 4px 12px rgba(147, 51, 234, 0.3)';
+
             selectedCount = parseInt(button.dataset.value);
         });
 
@@ -55542,7 +55672,7 @@ The final result must be a high-quality professional headshot suitable for Linke
         let selectedTheme = 'elegant-indoor';
         let selectedStyle = 'soft-dreamy';
         let selectedRatio = '3:4';
-        let selectedCount = 6;
+        let selectedCount = 4;
 
         // Theme descriptions in Bahasa Indonesia for better results
         const themeDescriptions = {
@@ -55756,12 +55886,18 @@ The final result must be a high-quality professional headshot suitable for Linke
                 if (!button) return;
 
                 countSelection.querySelectorAll('button').forEach(btn => {
-                    btn.classList.remove('count-selected', 'bg-gradient-to-r', 'from-rose-500', 'to-pink-500', 'text-white', 'border-rose-500', 'font-bold', 'shadow-lg');
-                    btn.classList.add('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
+                    btn.classList.remove('count-selected', 'font-bold');
+                    btn.classList.add('font-semibold');
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
                 });
 
-                button.classList.remove('bg-gray-50', 'hover:bg-gray-100', 'text-gray-700', 'border-gray-300', 'font-medium');
-                button.classList.add('count-selected', 'bg-gradient-to-r', 'from-rose-500', 'to-pink-500', 'text-white', 'border-rose-500', 'font-bold', 'shadow-lg');
+                button.classList.add('count-selected', 'font-bold');
+                button.classList.remove('font-semibold');
+                button.style.background = 'linear-gradient(135deg, #f43f5e, #ec4899)';
+                button.style.color = 'white';
+                button.style.boxShadow = '0 4px 12px rgba(244, 63, 94, 0.3)';
 
                 selectedCount = parseInt(button.dataset.count, 10);
                 if (countText) countText.textContent = selectedCount;
@@ -60665,7 +60801,7 @@ Be specific to ${data.campaignType} industry. Fokus pada insights yang actionabl
         let selectedPose = 'Formal Portrait';
         let selectedAccessories = ['Medal', 'Certificate'];
         let selectedAspect = '3:4';
-        let selectedCount = 6;
+        let selectedCount = 4;
         let generatedImages = [];
 
         // Multiple File Input Handler
@@ -61039,9 +61175,18 @@ Be specific to ${data.campaignType} industry. Fokus pada insights yang actionabl
                 if (!btn) return;
 
                 countSelection.querySelectorAll('.count-btn-graduation').forEach(b => {
-                    b.classList.remove('count-selected');
+                    b.classList.remove('count-selected', 'font-bold');
+                    b.classList.add('font-semibold');
+                    b.style.background = '';
+                    b.style.color = '';
+                    b.style.boxShadow = '';
                 });
-                btn.classList.add('count-selected');
+
+                btn.classList.add('count-selected', 'font-bold');
+                btn.classList.remove('font-semibold');
+                btn.style.background = 'linear-gradient(135deg, #a855f7, #ec4899)';
+                btn.style.color = 'white';
+                btn.style.boxShadow = '0 4px 12px rgba(168, 85, 247, 0.3)';
 
                 selectedCount = parseInt(btn.dataset.count, 10);
                 if (countText) countText.textContent = selectedCount;
