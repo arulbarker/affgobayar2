@@ -11079,22 +11079,30 @@
                             </div>
 
                             <div class="mt-6">
-                                <h2 class="text-xl font-semibold mb-3 text-gray-800">7. Jumlah Foto</h2>
-                                <div id="broll-count-selection" class="grid grid-cols-3 gap-3">
-                                    <button type="button" data-count="7" class="ratio-btn-broll selected">
-                                        <i class="fas fa-images mr-2"></i>7 Foto
-                                    </button>
-                                    <button type="button" data-count="14" class="ratio-btn-broll">
-                                        <i class="fas fa-images mr-2"></i>14 Foto
-                                    </button>
-                                    <button type="button" data-count="20" class="ratio-btn-broll">
-                                        <i class="fas fa-images mr-2"></i>20 Foto
-                                    </button>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <h2 class="text-xl font-semibold text-gray-800">7. Jumlah Foto</h2>
+                                    <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                 </div>
+                                <div id="broll-count-selection" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                    <button type="button" data-count="1" class="ratio-btn-broll font-semibold">1</button>
+                                    <button type="button" data-count="2" class="ratio-btn-broll font-semibold">2</button>
+                                    <button type="button" data-count="3" class="ratio-btn-broll font-semibold">3</button>
+                                    <button type="button" data-count="4" class="ratio-btn-broll selected font-bold" style="background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);">4</button>
+                                    <button type="button" data-count="5" class="ratio-btn-broll font-semibold">5</button>
+                                    <button type="button" data-count="6" class="ratio-btn-broll font-semibold">6</button>
+                                    <button type="button" data-count="7" class="ratio-btn-broll font-semibold">7</button>
+                                    <button type="button" data-count="8" class="ratio-btn-broll font-semibold">8</button>
+                                    <button type="button" data-count="9" class="ratio-btn-broll font-semibold">9</button>
+                                    <button type="button" data-count="10" class="ratio-btn-broll font-semibold">10</button>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-2">
+                                    <i class="fas fa-lightbulb mr-1"></i>
+                                    Pilih jumlah foto produk yang akan di-generate (1-10 variasi)
+                                </p>
                             </div>
 
                             <button id="broll-generate-btn" class="w-full btn-primary font-bold py-3 px-4 rounded-lg flex items-center justify-center text-lg mt-6" disabled>
-                                <span>Buat <span id="broll-count-text">7</span> Pose Produk</span>
+                                <span>Buat <span id="broll-count-text">4</span> Pose Produk</span>
                             </button>
                         </div>
                     </div>
@@ -11530,18 +11538,30 @@
                                     <div class="flex items-center gap-2 mb-3">
                                         <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 text-white font-bold text-sm shadow-lg">6</div>
                                         <h3 class="text-base font-semibold text-gray-800">Jumlah Foto</h3>
+                                        <span class="text-xs text-gray-500 ml-auto">Hemat API Key: Pilih 1-2</span>
                                     </div>
-                                    <div id="islami-count-options" class="grid grid-cols-3 gap-3">
-                                        <button type="button" data-value="4" class="option-btn-islami">4 Foto</button>
-                                        <button type="button" data-value="6" class="option-btn-islami selected">6 Foto</button>
-                                        <button type="button" data-value="8" class="option-btn-islami">8 Foto</button>
+                                    <div id="islami-count-options" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-sm">
+                                        <button type="button" data-value="1" class="option-btn-islami font-semibold">1</button>
+                                        <button type="button" data-value="2" class="option-btn-islami font-semibold">2</button>
+                                        <button type="button" data-value="3" class="option-btn-islami font-semibold">3</button>
+                                        <button type="button" data-value="4" class="option-btn-islami selected font-bold" style="background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">4</button>
+                                        <button type="button" data-value="5" class="option-btn-islami font-semibold">5</button>
+                                        <button type="button" data-value="6" class="option-btn-islami font-semibold">6</button>
+                                        <button type="button" data-value="7" class="option-btn-islami font-semibold">7</button>
+                                        <button type="button" data-value="8" class="option-btn-islami font-semibold">8</button>
+                                        <button type="button" data-value="9" class="option-btn-islami font-semibold">9</button>
+                                        <button type="button" data-value="10" class="option-btn-islami font-semibold">10</button>
                                     </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <i class="fas fa-lightbulb mr-1"></i>
+                                        Pilih jumlah foto islami yang akan di-generate (1-10 variasi)
+                                    </p>
                                 </div>
 
                                 <!-- Generate Button -->
                                 <button id="islami-generate-btn" class="w-full text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);" disabled>
                                     <i class="fas fa-wand-magic-sparkles mr-2"></i>
-                                    <span>Generate Foto Islami</span>
+                                    <span>Generate <span id="islami-count-text">4</span> Foto Islami</span>
                                 </button>
 
                                 <div class="text-center text-xs text-gray-500 mt-2">
@@ -28267,7 +28287,7 @@ Jawab pertanyaan user dengan helpful dan informatif!`;
         let brollBackgroundImageBase64 = null, brollBackgroundImageMimeType = null;
         const brollRatioSelection = document.getElementById('broll-ratio-selection');
         let selectedBrollRatio = '16:9';
-        let selectedBrollCount = 7;
+        let selectedBrollCount = 4;
         let selectedBrollTheme = '';
         let generatedBrollImages = [];
         
@@ -28436,10 +28456,25 @@ Jawab pertanyaan user dengan helpful dan informatif!`;
             brollCountSelection.addEventListener('click', (e) => {
                 const button = e.target.closest('[data-count]');
                 if (button) {
-                    document.querySelectorAll('#broll-count-selection [data-count]').forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
+                    // Remove selected state from all buttons
+                    document.querySelectorAll('#broll-count-selection [data-count]').forEach(btn => {
+                        btn.classList.remove('selected', 'font-bold');
+                        btn.classList.add('font-semibold');
+                        btn.style.background = '';
+                        btn.style.color = '';
+                        btn.style.boxShadow = '';
+                    });
+
+                    // Add selected state to clicked button
+                    button.classList.add('selected', 'font-bold');
+                    button.classList.remove('font-semibold');
+                    button.style.background = 'linear-gradient(135deg, #ec4899, #f43f5e)';
+                    button.style.color = 'white';
+                    button.style.boxShadow = '0 4px 12px rgba(236, 72, 153, 0.3)';
+
                     selectedBrollCount = parseInt(button.dataset.count, 10);
                     if (brollCountText) brollCountText.textContent = selectedBrollCount;
+                    if (brollResultCount) brollResultCount.textContent = selectedBrollCount;
                 }
             });
         }
@@ -51742,7 +51777,9 @@ Generate a stunning, professionally enhanced photo that maintains the person's a
         let selectedAge = 'dewasa';
         let selectedTheme = 'ramadan';
         let selectedRatio = '3:4';
-        let selectedCount = 6;
+        let selectedCount = 4;
+
+        const islamiCountText = document.getElementById('islami-count-text');
 
         // Setup image upload with HEIC support
         setupImageUploadNew(islamiProductInput, islamiProductUploadBox, (data) => {
@@ -51808,7 +51845,26 @@ Generate a stunning, professionally enhanced photo that maintains the person's a
 
         islamiCountOptions.addEventListener('click', (e) => {
             const btn = e.target.closest('[data-value]');
-            if (btn) selectedCount = parseInt(btn.dataset.value);
+            if (btn) {
+                // Remove selected state from all buttons
+                document.querySelectorAll('#islami-count-options [data-value]').forEach(b => {
+                    b.classList.remove('selected', 'font-bold');
+                    b.classList.add('font-semibold');
+                    b.style.background = '';
+                    b.style.color = '';
+                    b.style.boxShadow = '';
+                });
+
+                // Add selected state to clicked button
+                btn.classList.add('selected', 'font-bold');
+                btn.classList.remove('font-semibold');
+                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                btn.style.color = 'white';
+                btn.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.3)';
+
+                selectedCount = parseInt(btn.dataset.value);
+                if (islamiCountText) islamiCountText.textContent = selectedCount;
+            }
         });
 
         // Generate button click handler
