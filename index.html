@@ -9414,8 +9414,8 @@
                             <button type="button" data-provider="google" class="provider-btn provider-selected bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-3 rounded-lg border-2 border-blue-500 transition-all font-semibold shadow-md hover:shadow-lg">
                                 <i class="fab fa-google mr-2"></i>Google AI Studio
                             </button>
-                            <button type="button" data-provider="val" class="provider-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-4 py-3 rounded-lg border-2 border-gray-300 transition-all font-medium hover:border-purple-400">
-                                <i class="fas fa-bolt mr-2"></i>val.ai
+                            <button type="button" data-provider="fal" class="provider-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-4 py-3 rounded-lg border-2 border-gray-300 transition-all font-medium hover:border-purple-400">
+                                <i class="fas fa-bolt mr-2"></i>fal.ai
                             </button>
                             <button type="button" data-provider="atlascloud" class="provider-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-4 py-3 rounded-lg border-2 border-gray-300 transition-all font-medium hover:border-orange-400">
                                 <i class="fas fa-cloud mr-2"></i>atlascloud
@@ -9504,7 +9504,7 @@
                                 <li><i class="fas fa-check text-green-600 mr-2"></i>Terenkripsi dengan algoritma XOR</li>
                                 <li><i class="fas fa-check text-green-600 mr-2"></i>Tidak dikirim ke server selain provider pilihan Anda</li>
                                 <li><i class="fas fa-check text-green-600 mr-2"></i>Auto-clear saat logout</li>
-                                <li><i class="fas fa-check text-green-600 mr-2"></i>Mendukung 4 provider: Google AI Studio, val.ai, atlascloud, kie.ai</li>
+                                <li><i class="fas fa-check text-green-600 mr-2"></i>Mendukung 4 provider: Google AI Studio, fal.ai, atlascloud, kie.ai</li>
                             </ul>
                             <p class="text-xs text-amber-700 mt-3 bg-white/50 p-2 rounded border border-amber-200">
                                 <i class="fas fa-exclamation-triangle mr-1"></i>
@@ -27798,6 +27798,253 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     window.generateImageWithKie = generateImageWithKie;
+
+    // ============================================
+    // ATLASCLOUD.AI API INTEGRATION
+    // ============================================
+
+    /**
+     * Generate image using atlascloud.ai API
+     * @param {string} prompt - Text prompt for image generation
+     * @param {string} aspectRatio - Aspect ratio like '1:1', '16:9', '9:16', '3:4', '4:3'
+     * @param {string} outputFormat - 'png' or 'jpeg'
+     * @returns {Promise<string>} Base64 data URL of generated image
+     */
+    async function generateImageWithAtlascloud(prompt, aspectRatio = '1:1', outputFormat = 'png') {
+        console.log('[atlascloud] Creating generation task...', { prompt: prompt.substring(0, 100), aspectRatio });
+
+        const apiKey = getApiKey();
+        if (!apiKey) {
+            throw new Error('API key tidak ditemukan');
+        }
+
+        // Step 1: Start image generation
+        const generateResponse = await fetch('https://api.atlascloud.ai/api/v1/model/generateImage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'google/gemini-2.5-flash-image/text-to-image',
+                aspect_ratio: aspectRatio,
+                enable_base64_output: false,
+                enable_sync_mode: false,
+                output_format: outputFormat,
+                prompt: prompt
+            })
+        });
+
+        if (!generateResponse.ok) {
+            const errorData = await generateResponse.json().catch(() => ({}));
+            throw new Error(`atlascloud API error: ${generateResponse.status} - ${errorData.message || 'Unknown error'}`);
+        }
+
+        const generateJson = await generateResponse.json();
+        const predictionId = generateJson.data?.id;
+
+        if (!predictionId) {
+            throw new Error('atlascloud: No prediction ID returned');
+        }
+
+        console.log('[atlascloud] Prediction created:', predictionId);
+
+        // Step 2: Poll for result
+        const pollUrl = `https://api.atlascloud.ai/api/v1/model/prediction/${predictionId}`;
+        const maxAttempts = 60;
+        const intervalMs = 2000;
+
+        for (let i = 0; i < maxAttempts; i++) {
+            await new Promise(resolve => setTimeout(resolve, intervalMs));
+
+            const response = await fetch(pollUrl, {
+                headers: { 'Authorization': `Bearer ${apiKey}` }
+            });
+
+            if (!response.ok) {
+                throw new Error(`atlascloud poll error: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const status = result.data?.status;
+
+            if (status === 'completed') {
+                const imageUrl = result.data?.outputs?.[0];
+                if (!imageUrl) {
+                    throw new Error('atlascloud: No image URL in completed result');
+                }
+
+                console.log('[atlascloud] Generation completed, image URL:', imageUrl);
+
+                // Fetch image and convert to base64
+                const imageResponse = await fetch(imageUrl);
+                if (!imageResponse.ok) {
+                    throw new Error('Failed to fetch generated image from atlascloud');
+                }
+
+                const imageBlob = await imageResponse.blob();
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(imageBlob);
+                });
+
+            } else if (status === 'failed') {
+                throw new Error(`atlascloud generation failed: ${result.data?.error || 'Unknown error'}`);
+            }
+
+            // Still processing, continue polling
+        }
+
+        throw new Error(`atlascloud timeout after ${maxAttempts * intervalMs / 1000} seconds`);
+    }
+    window.generateImageWithAtlascloud = generateImageWithAtlascloud;
+
+    // ============================================
+    // FAL.AI API INTEGRATION
+    // ============================================
+
+    /**
+     * Generate image using fal.ai API
+     * @param {string} prompt - Text prompt for image generation
+     * @param {string} aspectRatio - Aspect ratio like '1:1', '16:9', '9:16', '3:4', '4:3'
+     * @param {string} outputFormat - 'png', 'jpeg', or 'webp'
+     * @returns {Promise<string>} Base64 data URL of generated image
+     */
+    async function generateImageWithFal(prompt, aspectRatio = '1:1', outputFormat = 'png') {
+        console.log('[fal.ai] Creating generation task...', { prompt: prompt.substring(0, 100), aspectRatio });
+
+        const apiKey = getApiKey();
+        if (!apiKey) {
+            throw new Error('API key tidak ditemukan');
+        }
+
+        // Step 1: Submit request to queue
+        const submitResponse = await fetch('https://queue.fal.run/fal-ai/gemini-25-flash-image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Key ${apiKey}`
+            },
+            body: JSON.stringify({
+                prompt: prompt,
+                aspect_ratio: aspectRatio,
+                output_format: outputFormat,
+                num_images: 1
+            })
+        });
+
+        if (!submitResponse.ok) {
+            const errorData = await submitResponse.json().catch(() => ({}));
+            throw new Error(`fal.ai API error: ${submitResponse.status} - ${errorData.message || 'Unknown error'}`);
+        }
+
+        const submitJson = await submitResponse.json();
+        const requestId = submitJson.request_id;
+
+        if (!requestId) {
+            throw new Error('fal.ai: No request ID returned');
+        }
+
+        console.log('[fal.ai] Request submitted:', requestId);
+
+        // Step 2: Poll for result
+        const maxAttempts = 60;
+        const intervalMs = 2000;
+
+        for (let i = 0; i < maxAttempts; i++) {
+            await new Promise(resolve => setTimeout(resolve, intervalMs));
+
+            const statusResponse = await fetch(`https://queue.fal.run/fal-ai/gemini-25-flash-image/requests/${requestId}/status`, {
+                headers: { 'Authorization': `Key ${apiKey}` }
+            });
+
+            if (!statusResponse.ok) {
+                throw new Error(`fal.ai status check error: ${statusResponse.status}`);
+            }
+
+            const statusJson = await statusResponse.json();
+            const status = statusJson.status;
+
+            if (status === 'COMPLETED') {
+                // Get result
+                const resultResponse = await fetch(`https://queue.fal.run/fal-ai/gemini-25-flash-image/requests/${requestId}`, {
+                    headers: { 'Authorization': `Key ${apiKey}` }
+                });
+
+                if (!resultResponse.ok) {
+                    throw new Error(`fal.ai result fetch error: ${resultResponse.status}`);
+                }
+
+                const resultJson = await resultResponse.json();
+                const imageUrl = resultJson.images?.[0]?.url;
+
+                if (!imageUrl) {
+                    throw new Error('fal.ai: No image URL in result');
+                }
+
+                console.log('[fal.ai] Generation completed, image URL:', imageUrl);
+
+                // Fetch image and convert to base64
+                const imageResponse = await fetch(imageUrl);
+                if (!imageResponse.ok) {
+                    throw new Error('Failed to fetch generated image from fal.ai');
+                }
+
+                const imageBlob = await imageResponse.blob();
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(imageBlob);
+                });
+
+            } else if (status === 'FAILED') {
+                throw new Error(`fal.ai generation failed: ${statusJson.error || 'Unknown error'}`);
+            }
+
+            // Still processing, continue polling
+        }
+
+        throw new Error(`fal.ai timeout after ${maxAttempts * intervalMs / 1000} seconds`);
+    }
+    window.generateImageWithFal = generateImageWithFal;
+
+    // ============================================
+    // UNIVERSAL IMAGE GENERATION WRAPPER
+    // ============================================
+
+    /**
+     * Universal image generation function that auto-detects provider
+     * @param {string} prompt - Text prompt for image generation
+     * @param {string} aspectRatio - Aspect ratio like '1:1', '16:9', '9:16', '3:4', '4:3'
+     * @param {string} outputFormat - 'png' or 'jpeg' (default: 'png')
+     * @param {Array<string>} imageUrls - Optional image URLs for kie.ai only
+     * @returns {Promise<string>} Base64 data URL of generated image
+     */
+    async function generateImageUniversal(prompt, aspectRatio = '1:1', outputFormat = 'png', imageUrls = []) {
+        const provider = getApiProvider();
+        console.log(`[Universal] Using provider: ${provider}`);
+
+        try {
+            if (provider === 'kie') {
+                return await generateImageWithKie(prompt, imageUrls, outputFormat, aspectRatio);
+            } else if (provider === 'atlascloud') {
+                return await generateImageWithAtlascloud(prompt, aspectRatio, outputFormat);
+            } else if (provider === 'fal') {
+                return await generateImageWithFal(prompt, aspectRatio, outputFormat);
+            } else {
+                // Default: Google AI Studio
+                // This will use existing Google SDK implementation in features
+                throw new Error('Use Google SDK for google provider');
+            }
+        } catch (error) {
+            console.error(`[Universal] Error with provider ${provider}:`, error);
+            throw error;
+        }
+    }
+    window.generateImageUniversal = generateImageUniversal;
 
     closeModalBtn.addEventListener('click', () => universalModal.classList.remove('visible'));
     universalModal.addEventListener('click', (e) => {
@@ -70291,15 +70538,15 @@ This photo will be used as a consistent model reference for various product phot
                     </p>
                 `
             },
-            val: {
-                name: 'val.ai',
-                placeholder: 'val_...',
-                format: 'Format: val_... (API key dari val.ai)',
+            fal: {
+                name: 'fal.ai',
+                placeholder: 'fal_...',
+                format: 'Format: fal_... (API key dari fal.ai, bisa juga tanpa prefix)',
                 cardColor: 'from-purple-50 to-pink-50 border-purple-200',
                 iconColor: 'text-purple-600',
                 instructions: `
                     <ol class="text-sm text-gray-700 space-y-2 ml-4 list-decimal">
-                        <li>Buka <a href="https://val.ai" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:text-purple-800 font-semibold underline">val.ai</a></li>
+                        <li>Buka <a href="https://fal.ai" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:text-purple-800 font-semibold underline">fal.ai</a></li>
                         <li>Login atau daftar akun baru</li>
                         <li>Buka dashboard atau settings</li>
                         <li>Cari menu "<strong>API Keys</strong>" atau "<strong>Developer</strong>"</li>
@@ -70308,7 +70555,11 @@ This photo will be used as a consistent model reference for various product phot
                     </ol>
                     <p class="text-xs text-gray-600 mt-3 bg-white/50 p-2 rounded border border-purple-200">
                         <i class="fas fa-info-circle mr-1"></i>
-                        <strong>Catatan:</strong> val.ai adalah aggregator API yang kompatibel dengan Gemini API.
+                        <strong>Catatan:</strong> fal.ai menggunakan Gemini 2.5 Flash Image model dengan queue-based API.
+                    </p>
+                    <p class="text-xs text-gray-600 mt-2 bg-yellow-50 p-2 rounded border border-yellow-200">
+                        <i class="fas fa-bolt mr-1"></i>
+                        <strong>Model:</strong> fal-ai/gemini-25-flash-image
                     </p>
                 `
             },
