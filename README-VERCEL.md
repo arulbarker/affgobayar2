@@ -16,6 +16,7 @@
    - **Google AI Studio** - API resmi Google Gemini
    - **val.ai** - API aggregator kompatibel Gemini
    - **atlascloud** - API aggregator kompatibel Gemini
+   - **kie.ai** - Task-based API dengan Gemini Flash 2.5 Image
 4. Dapatkan API key dari provider pilihan Anda
 5. Paste API key di form
 6. Klik "Test Koneksi" untuk verifikasi
@@ -41,6 +42,13 @@
 - **Kelebihan**: API aggregator, pricing kompetitif
 - **Kompatibilitas**: 100% kompatibel dengan Gemini API
 
+### kie.ai
+- **Website**: https://kie.ai
+- **Format**: kie_...
+- **Model**: google/nano-banana-edit (Gemini Flash 2.5 Image)
+- **Kelebihan**: Task-based async API, reliable image generation
+- **Kompatibilitas**: Gemini Flash 2.5 Image compatible
+
 ## Fitur
 
 70 AI Tools untuk photo/video generation:
@@ -57,7 +65,7 @@
 - Enkripsi XOR untuk storage
 - Tidak dikirim ke server selain provider yang dipilih
 - Auto-clear saat logout
-- Support multiple providers (Google, val.ai, atlascloud)
+- Support 4 providers: Google AI Studio, val.ai, atlascloud, kie.ai
 
 ## GitHub
 

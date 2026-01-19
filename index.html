@@ -9410,7 +9410,7 @@
                         <label class="block text-sm font-semibold text-gray-700 mb-3">
                             <i class="fas fa-server mr-1"></i>Pilih Provider API
                         </label>
-                        <div id="settings-provider-selection" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div id="settings-provider-selection" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                             <button type="button" data-provider="google" class="provider-btn provider-selected bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-3 rounded-lg border-2 border-blue-500 transition-all font-semibold shadow-md hover:shadow-lg">
                                 <i class="fab fa-google mr-2"></i>Google AI Studio
                             </button>
@@ -9419,6 +9419,9 @@
                             </button>
                             <button type="button" data-provider="atlascloud" class="provider-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-4 py-3 rounded-lg border-2 border-gray-300 transition-all font-medium hover:border-orange-400">
                                 <i class="fas fa-cloud mr-2"></i>atlascloud
+                            </button>
+                            <button type="button" data-provider="kie" class="provider-btn bg-gray-50 hover:bg-gray-100 text-gray-700 px-4 py-3 rounded-lg border-2 border-gray-300 transition-all font-medium hover:border-green-400">
+                                <i class="fas fa-rocket mr-2"></i>kie.ai
                             </button>
                         </div>
                     </div>
@@ -9499,8 +9502,9 @@
                             <ul class="text-sm text-gray-700 space-y-1">
                                 <li><i class="fas fa-check text-green-600 mr-2"></i>API key tersimpan lokal di browser Anda</li>
                                 <li><i class="fas fa-check text-green-600 mr-2"></i>Terenkripsi dengan algoritma XOR</li>
-                                <li><i class="fas fa-check text-green-600 mr-2"></i>Tidak dikirim ke server selain Google AI Studio</li>
+                                <li><i class="fas fa-check text-green-600 mr-2"></i>Tidak dikirim ke server selain provider pilihan Anda</li>
                                 <li><i class="fas fa-check text-green-600 mr-2"></i>Auto-clear saat logout</li>
+                                <li><i class="fas fa-check text-green-600 mr-2"></i>Mendukung 4 provider: Google AI Studio, val.ai, atlascloud, kie.ai</li>
                             </ul>
                             <p class="text-xs text-amber-700 mt-3 bg-white/50 p-2 rounded border border-amber-200">
                                 <i class="fas fa-exclamation-triangle mr-1"></i>
@@ -70180,6 +70184,31 @@ This photo will be used as a consistent model reference for various product phot
                     <p class="text-xs text-gray-600 mt-3 bg-white/50 p-2 rounded border border-orange-200">
                         <i class="fas fa-info-circle mr-1"></i>
                         <strong>Catatan:</strong> atlascloud adalah aggregator API yang kompatibel dengan Gemini API.
+                    </p>
+                `
+            },
+            kie: {
+                name: 'kie.ai',
+                placeholder: 'kie_...',
+                format: 'Format: kie_... (API key dari kie.ai)',
+                cardColor: 'from-green-50 to-emerald-50 border-green-200',
+                iconColor: 'text-green-600',
+                instructions: `
+                    <ol class="text-sm text-gray-700 space-y-2 ml-4 list-decimal">
+                        <li>Buka <a href="https://kie.ai" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-800 font-semibold underline">kie.ai</a></li>
+                        <li>Login atau daftar akun baru</li>
+                        <li>Navigasi ke dashboard atau settings</li>
+                        <li>Cari menu "<strong>API Keys</strong>" atau "<strong>Developer</strong>"</li>
+                        <li>Generate API key baru atau copy yang sudah ada</li>
+                        <li>Paste di form di bawah ini</li>
+                    </ol>
+                    <p class="text-xs text-gray-600 mt-3 bg-white/50 p-2 rounded border border-green-200">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        <strong>Catatan:</strong> kie.ai menggunakan Gemini Flash 2.5 Image dengan task-based async API untuk image generation.
+                    </p>
+                    <p class="text-xs text-gray-600 mt-2 bg-yellow-50 p-2 rounded border border-yellow-200">
+                        <i class="fas fa-bolt mr-1"></i>
+                        <strong>Model:</strong> google/nano-banana-edit (Gemini Flash 2.5 Image compatible)
                     </p>
                 `
             }
